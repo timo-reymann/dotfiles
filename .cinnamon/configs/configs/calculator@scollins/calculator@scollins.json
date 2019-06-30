@@ -1,0 +1,45 @@
+{
+    "angleMode": {
+        "type": "radiogroup",
+        "description": "Angle Measure",
+        "options": {
+            "Degrees": 0,
+            "Radians": 1
+        },
+        "default": 0,
+        "value": 0
+    },
+    "rpn": {
+        "type": "checkbox",
+        "description": "Use Reverse-Polish Notation",
+        "default": false,
+        "value": false
+    },
+    "layout": {
+        "type": "radiogroup",
+        "description": "Style",
+        "options": {
+            "4-function": 1,
+            "Scientific": 2
+        },
+        "default": 1,
+        "value": 2
+    },
+    "precision": {
+        "type": "spinbutton",
+        "description": "Precision",
+        "min": 6,
+        "max": 14,
+        "step": 1,
+        "default": 10,
+        "units": "digits",
+        "value": 10
+    },
+    "raiseKey": {
+        "type": "keybinding",
+        "description": "Raise to top shorcut key",
+        "default": "<Super>c",
+        "value": "<Super>c"
+    },
+    "__md5__": "a033d445daaf2af712b6f2f777b5e32d"
+}
