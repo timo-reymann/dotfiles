@@ -15,7 +15,7 @@ ask() {
 
 if [ -z "$1" ] || [ ! -e "$1" ]
 then
-  echo "Please specify the relative path"
+  echo "❌ Please specify a valid relative path"
   exit 1
 fi
 
@@ -35,4 +35,9 @@ fi
 echo "🔗 $source -> $target"
 ln -s $source $target
 
-echo "✔️  Symlink for $source created!"
+if [ $? = 0 ]
+then
+  echo "✔️  Symlink for $source created!"
+else
+  echo "❌ Error setting symlink!"
+fi
