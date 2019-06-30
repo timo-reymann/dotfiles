@@ -22,15 +22,17 @@ fi
 target=$HOME/$1
 source=$PWD/$1
 
-echo "🔗 $source -> $target"
-
 if [ -e $target ]
 then
   result=$(ask "Target already exists, want to remove it first?")
   if [ $result ]
   then
-    echo "Deleting"
+    echo "🗑️ Deleting $source"
+    rm -rf $source
   fi
 fi
 
+echo "🔗 $source -> $target"
 ln -s $source $target
+
+echo "✔️  Symlink for $source created!"
