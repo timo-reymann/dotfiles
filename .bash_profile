@@ -1,10 +1,15 @@
 # Function to get branch of current directory or empty string if no git folder
 git_branch() {
-  echo "$(git branch 2> /dev/null | grep '^*' | colrm 1 2)"
+  output="$(git branch 2> /dev/null | grep '^*' | colrm 1 2)"
+
+  if [ ! -z $output ]
+    then
+    echo " $output"
+  fi
 }
 
 # Customize bash colors
-export PS1="\[\033[94m\]\w\[\033[00;96m\] $(git_branch)\[\033[00m\] \[\033[00;92m\]→\[\033[00m\]  "
+export PS1='\[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\]\[\033[00m\]\n$ '
 
 # Alias definition
 alias ll="ls -lisa"
