@@ -4,12 +4,12 @@ git_branch() {
 
   if [ ! -z $output ]
     then
-    echo " $output"
+    echo " 🌳$output"
   fi
 }
 
 # Customize bash colors
-export PS1='\[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\]\[\033[00m\]\n$ '
+export PS1='🦄\[\e[1m\]\[\e[38;5;202m\]\u@\h 📂\[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\]\[\033[00m\]\n$ '
 
 # Alias definition
 alias ll="ls -lisa"
