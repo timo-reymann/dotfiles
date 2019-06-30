@@ -1,0 +1,5 @@
+" Please run the following command to install the minimal env for vim containg
+" all prequesits
+" curl -L https://bit.ly/janus-bootstrap | bash
+syntax enable
+colorscheme darcula
