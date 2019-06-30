@@ -2,7 +2,7 @@
 
 ask() {
   message=$1
-  
+
   read -r -p "🤔 $message [y/n] " input
 
   case $input in [yY][eE][sS]|[yY])
@@ -27,8 +27,8 @@ then
   result=$(ask "Target already exists, want to remove it first?")
   if [ $result ]
   then
-    echo "🗑️ Deleting $source"
-    rm -rf $source
+    echo "🗑️ Deleting $target"
+    rm -rf $target
   fi
 fi
 
