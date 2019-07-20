@@ -16,6 +16,7 @@ alias ll="ls -lisa"
 alias update="sudo apt update && sudo apt upgrade -y"
 alias diff="git diff $(git branch | grep \* | cut -d ' ' -f2)"
 alias commit="git stage . && git commit -m"
+alias gpush="git push"
 
 # Run neofetch
 neofetch
