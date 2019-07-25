@@ -32,5 +32,7 @@
     }
   },
   "useTaobaoRegistry": false,
-  "packageManager": "yarn"
+  "packageManager": "yarn",
+  "latestVersion": "3.9.3",
+  "lastChecked": 1563975705548
 }
