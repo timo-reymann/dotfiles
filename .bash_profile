@@ -13,6 +13,7 @@ alias update="sudo apt update && sudo apt upgrade -y"
 alias diff="git diff \$(git branch | grep \* | cut -d ' ' -f2)"
 alias commit="git stage . && git commit -m"
 alias gpush="git push"
+alias gpull="git pull --rebase"
 alias pls="sudo"
 
 # Export helper to fix m$ bullshit and utf8 probs
