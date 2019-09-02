@@ -50,5 +50,8 @@ export -f commit-pwd
 # Customize bash colors
 export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h  📂 \[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\]\[\033[00m\]\n$ '
 
+# Environment variables
+export EDITOR=vim
+
 # Run neofetch
 neofetch
