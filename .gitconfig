@@ -20,3 +20,5 @@
 #	ui = always
 [github]
   username = timo-reymann
+[alias]
+	release = semver-git-tag
