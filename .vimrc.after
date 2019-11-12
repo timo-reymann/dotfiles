@@ -11,3 +11,5 @@ set textwidth=0
 set wrapmargin=0
 set encoding=utf-8
 set fileencoding=utf-8
+autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
+autocmd BufRead,BufNewFile *.yaml.j2 set filetype=yaml
