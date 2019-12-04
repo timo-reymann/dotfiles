@@ -8,7 +8,7 @@ git_branch() {
 }
 
 # Alias definition
-alias ll="ls -lisa"
+alias ll="ls -lisah"
 alias update="sudo apt update && sudo apt upgrade -y"
 alias diff="git diff \$(git branch | grep \* | cut -d ' ' -f2)"
 alias commit="git stage . && git commit -m"
