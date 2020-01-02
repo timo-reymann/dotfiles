@@ -15,6 +15,7 @@ alias commit="git stage . && git commit -m"
 alias gpush="git push"
 alias gpull="git pull --rebase"
 alias pls="sudo"
+alias gpull-all="git pull --all --recurse-submodules"
 
 # Export helper to fix m$ bullshit and utf8 probs
 to-utf8() {
