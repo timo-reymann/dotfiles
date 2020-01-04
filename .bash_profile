@@ -13,9 +13,9 @@ alias update="sudo apt update && sudo apt upgrade -y"
 alias diff="git diff \$(git branch | grep \* | cut -d ' ' -f2)"
 alias commit="git stage . && git commit -m"
 alias gpush="git push"
-alias gpull="git pull --rebase"
+alias gpull="git pull --rebase --all --recurse-submodules"
 alias pls="sudo"
-alias gpull-all="git pull --all --recurse-submodules"
+alias gpull-all='find . -name .git -type d | xargs -n1 -P4 -I% git --git-dir=% --work-tree=%/.. remote update -p'
 
 # Export helper to fix m$ bullshit and utf8 probs
 to-utf8() {
