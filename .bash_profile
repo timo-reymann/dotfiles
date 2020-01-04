@@ -14,8 +14,8 @@ alias diff="git diff \$(git branch | grep \* | cut -d ' ' -f2)"
 alias commit="git stage . && git commit -m"
 alias gpush="git push"
 alias gpull="git pull --rebase --all --recurse-submodules"
+alias gpull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
 alias pls="sudo"
-alias gpull-all='find . -name .git -type d | xargs -n1 -P4 -I% git --git-dir=% --work-tree=%/.. remote update -p'
 
 # Export helper to fix m$ bullshit and utf8 probs
 to-utf8() {
