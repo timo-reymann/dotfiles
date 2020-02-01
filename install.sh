@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Shell script for setting up a host with my basic preferences on Debian-based OS
+# Shell script for setting up a host with my basic preferences on Debian-based OS, assuming the dotfiles are already initialized
 #
 # basic packages
 sudo apt-get -y install \
@@ -16,3 +16,8 @@ rm -rf bashmarks && \
 git clone git://github.com/huyng/bashmarks.git && \
 cd /tmp/bashmarks && \
 make install
+
+# install terminus
+github-release-download Eugeny/terminus linux.deb
+sudo dpkg -i linux.deb
+rm linux.deb
