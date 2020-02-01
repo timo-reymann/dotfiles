@@ -3,6 +3,32 @@ hotkeys:
   profile: {}
   new-tab:
     - - Ctrl-T
+  zoom-in:
+    - - 'Ctrl-]'
+  zoom-out:
+    - - Ctrl-/
+  tab-1:
+    - - Ctrl-1
+  tab-2:
+    - - Ctrl-2
+  tab-3:
+    - - Ctrl-3
+  tab-4:
+    - - Ctrl-4
+  tab-5:
+    - - Ctrl-5
+  tab-6:
+    - - Ctrl-6
+  tab-7:
+    - - Ctrl-7
+  tab-8:
+    - - Ctrl-8
+  tab-9:
+    - - Ctrl-9
+  next-tab:
+    - - Ctrl-Tab
+  previous-tab: []
+  ctrl-c: []
 terminal:
   colorScheme:
     name: Argonaut
