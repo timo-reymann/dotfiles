@@ -54,21 +54,23 @@ terminal:
       - '#f4f4f4'
   font: Ubuntu Mono
   ligatures: false
-  background: theme
+  background: colorScheme
   cursor: beam
   environment: {}
   frontend: hterm
   bell: 'off'
   rightClick: menu
   fontSize: 17
-ssh: {}
 appearance:
   theme: Compact
   tabsLocation: top
-  opacity: 1
+  opacity: 0.4
   frame: thin
   dock: 'off'
 enableAnalytics: false
 enableWelcomeTab: false
 titleControl:
-  replacePattern: ''
+  replacePattern: \t
+pluginBlacklist:
+  - ssh
+ssh: {}
