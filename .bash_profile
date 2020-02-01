@@ -48,6 +48,12 @@ commit-pwd() {
 }
 export -f commit-pwd
 
+# shell bookmarks
+if [ -f ~/.local/bin/bashmarks.sh ]
+then
+    source ~/.local/bin/bashmarks.sh
+fi
+
 # Customize bash colors
 export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h  📂 \[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\]\[\033[00m\]\n$ '
 
