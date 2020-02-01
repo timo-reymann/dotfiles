@@ -31,27 +31,27 @@ hotkeys:
   ctrl-c: []
 terminal:
   colorScheme:
-    name: Argonaut
-    foreground: '#fffaf4'
-    background: '#0e1019'
-    cursor: '#ff0018'
+    name: deep
+    foreground: '#cdcdcd'
+    background: '#000000'
+    cursor: '#d0d0d0'
     colors:
-      - '#232323'
-      - '#ff000f'
-      - '#8ce10b'
-      - '#ffb900'
-      - '#008df8'
-      - '#6d43a6'
-      - '#00d8eb'
-      - '#ffffff'
-      - '#444444'
-      - '#ff2740'
-      - '#abe15b'
-      - '#ffd242'
-      - '#0092ff'
-      - '#9a5feb'
-      - '#67fff0'
-      - '#ffffff'
+      - '#000000'
+      - '#d11600'
+      - '#37c32c'
+      - '#e3c421'
+      - '#5c6bfd'
+      - '#dd5be5'
+      - '#6eb4f2'
+      - '#e0e0e0'
+      - '#535353'
+      - '#f4152c'
+      - '#01ea10'
+      - '#ffee1d'
+      - '#8cb0f8'
+      - '#e056f5'
+      - '#67ecff'
+      - '#f4f4f4'
   font: Ubuntu Mono
   ligatures: false
   background: theme
@@ -65,7 +65,7 @@ ssh: {}
 appearance:
   theme: Compact
   tabsLocation: top
-  opacity: 0.45
+  opacity: 1
   frame: thin
   dock: 'off'
 enableAnalytics: false
