@@ -60,7 +60,7 @@ terminal:
   frontend: hterm
   bell: 'off'
   rightClick: menu
-  fontSize: 17
+  fontSize: 18
 appearance:
   theme: Compact
   tabsLocation: top

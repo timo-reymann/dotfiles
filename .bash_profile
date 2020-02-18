@@ -16,7 +16,7 @@ alias gpush="git push"
 alias gpull="git pull --rebase --all --recurse-submodules"
 alias gpull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
 alias pls="sudo"
-
+alias flush-dns="sudo systemd-resolve --flush-caches"
 # Export helper to fix m$ bullshit and utf8 probs
 to-utf8() {
     if [ -z "$1" ] || [ ! -e "$1" ]
