@@ -44,7 +44,7 @@ commit-pwd() {
         return
     fi
 
-    commit "$(basename $PWD) : $1"
+    commit "$(basename $PWD): $1"
 }
 export -f commit-pwd
 
