@@ -28,7 +28,8 @@
             "banshee",
             "vlc",
             "rhythmbox",
-            "spotify"
+            "spotify",
+            "io.github.GnomeMpv"
         ]
     },
     "section2": {
