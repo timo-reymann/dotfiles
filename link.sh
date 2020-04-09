@@ -32,6 +32,18 @@ then
   fi
 fi
 
+target_dir="$(dirname $target)"
+if [ ! -d "$target_dir" ]
+then
+  result=$(ask "One or more parent folders are missing, do you want to create them?")
+  if [ $result ]
+  then
+    echo "🌟 Creating $target_dir ..."
+    mkdir -p "$target_dir"
+  fi
+fi
+
+
 echo "🔗 $source -> $target"
 ln -s $source $target
 
