@@ -1,0 +1,24 @@
+[/]
+quake-tab-position='right'
+prompt-on-close=true
+tab-position='left'
+use-overlay-scrollbar=true
+sidebar-on-right=false
+terminal-title-style='small'
+theme-variant='dark'
+use-tabs=false
+prompt-on-new-session=false
+warn-vte-config-issue=false
+focus-follow-mouse=true
+terminal-title-show-when-single=false
+window-style='disable-csd'
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+visible-name='Standard'
+palette=['#000000', '#CC0000', '#4D9A05', '#C3A000', '#3464A3', '#754F7B', '#05979A', '#D3D6CF', '#545652', '#EF2828', '#89E234', '#FBE84F', '#729ECF', '#AC7EA8', '#34E2E2', '#EDEDEB']
+use-system-font=false
+use-theme-colors=true
+exit-action='close'
+font='JetBrains Mono Medium 14'
+terminal-title='${username}@${directory}'
+background-transparency-percent=11
