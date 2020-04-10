@@ -2,4 +2,5 @@
   apt_repository:
     repo: "ppa:{{ param_name }}"
     state: present
+  become: true
 
