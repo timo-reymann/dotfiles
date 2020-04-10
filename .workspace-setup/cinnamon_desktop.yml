@@ -1,4 +1,4 @@
-- name: Setup cinnamon
+- name: Setup cinnamon desktop and common programs
   hosts: localhost
   roles:
     - role: ubuntu_ppa
@@ -13,9 +13,19 @@
         - cinnamon
         - plank
         - ulauncher
+        - snapd
       tags:
         - packages
         - desktop
+
+    - role: snap
+      param_names:
+        - spotify
+        - vlc
+      tags:
+        - packages
+        - desktop
+        - snaps
 
     - role: shell_exec
       param_cmd: "gsettings set org.cinnamon.desktop.default-applications.terminal exec 'tilix'"

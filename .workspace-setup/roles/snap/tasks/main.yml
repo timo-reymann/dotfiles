@@ -1,0 +1,6 @@
+- name: "Install snap"
+  snap:
+    name: "{{ item  }}"
+    classic: yes
+  become: true
+  with_items: "{{ param_names }}"

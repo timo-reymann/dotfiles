@@ -67,3 +67,21 @@
         - dev
         - go
 
+    - role: snap
+      param_names:
+        - vscode
+      tags:
+        - editor
+        - dev
+        - vscode
+        - snap
+
+    - role: snap
+      param_names:
+        - kubelet
+        - redis-desktop-manager
+        - postman
+      tags:
+        - util
+        - dev
+        - snap
