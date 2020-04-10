@@ -20,18 +20,17 @@ These dotfiles make use of [yadm](https://yadm.io/) to handle all kinds
 of stuff.
 
 ## Basic
-- Install yadm: ``sudo apt install -y yadm``
+- Install yadm: ``sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm``
 - Let the bootstrap install the required stuff
 - Decrypt secret files: ``sudo yadm decrypt``
 
 ## Advanced
-Advanced package configuration and so on can be configured using ansible:
+Advanced package configuration and so on can be configured using ansible.
 
-- Cinnamon desktop setup: `cd ~/workspace-setup && ansible-playbook cinnamon_desktop.yml`
-- Complete setup (without dev): `cd ~/workspace-setup && ansible-playbook desktop_full.yml`
-- Dev setup: `cd ~/workspace-setup && ansible-playbook dev.yml`
+For every class there is a playbook including the basic operations. If
+anything special is required, just execute the playbooks seperately.
 
-## Classes
+### Classes
 The following classes are planned/active:
 
 - *work*: Work related config (also applys dev config)
