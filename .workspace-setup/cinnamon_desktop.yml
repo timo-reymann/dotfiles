@@ -1,0 +1,25 @@
+- name: Setup cinnamon
+  hosts: localhost
+  roles:
+    - role: ubuntu_ppa
+      param_name: "agornostal/ulauncher"
+      tags:
+        - packages
+        - desktop
+        - ppa
+
+    - role: package_install
+      param_packages:
+        - cinnamon
+        - plank
+        - ulauncher
+      tags:
+        - packages
+        - desktop
+
+    - role: shell_exec
+      param_cmd: "gsettings set org.cinnamon.desktop.default-applications.terminal exec 'tilix'"
+      tags:
+        - packages
+        - desktop
+

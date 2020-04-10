@@ -8,4 +8,4 @@
   args:
     executable: /bin/bash
     warn: false
-  when: not vim_janus_directory.exists
+  when: not vim_janus_directory.stat.exists

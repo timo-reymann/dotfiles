@@ -3,3 +3,5 @@
     state: present
     name: "{{ item }}"
   loop: "{{ param_packages }}"
+  loop_control:
+    label: "Ensure package {{ item  }} is installed"

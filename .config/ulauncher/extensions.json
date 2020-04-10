@@ -1,0 +1,16 @@
+{
+    "com.github.pywkm.ulauncher-spotify": {
+        "id": "com.github.pywkm.ulauncher-spotify",
+        "url": "https://github.com/pywkm/ulauncher-spotify",
+        "updated_at": "2019-10-02T15:05:34.823677",
+        "last_commit": "a620df994069c9bed572204afb1d5577d603e444",
+        "last_commit_time": "2019-06-20T22:27:44"
+    },
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2019-10-02T15:05:36.126640",
+        "last_commit": "34a4776fcdf8be9b22d524b98631298efe668fb9",
+        "last_commit_time": "2019-09-17T20:03:39"
+    }
+}
