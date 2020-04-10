@@ -1,26 +1,71 @@
 #!/bin/bash
 set -e
 
+# output title line with seperator
 output_step() {
     cols=$(tput cols)
     printf "$(tput setaf 10)🚀 %s $(tput sgr0)" "$1"
     printf "%-`expr $cols - 5 - ${#1}`s\n" "" | tr ' ' '-'
 }
 
+# util to check if command is executable
+check_cmd_present() {
+    command -v "$1" > /dev/null 2>&1
+    return $?
+}
+
+# linbe break
 line_br() {
     echo ""
 }
+
+# helper for asking y/n
+ask() {
+  message=$1
+
+  read -r -p "$(tput setaf 6)🤔 $message [y/n] $(tput sgr0)" -n 1
+  echo ""
+
+  if [[ ! $REPLY =~ ^[Yy]$ ]];
+  then
+        return 1
+  fi
+
+  return 0
+}
+
+output_step "Loading class"
+class=$(yadm config local.class)
+if [ -z "$class" ]
+then
+    if ask "You got no class set, do you want to set one?"
+    then
+        read class
+        yadm config local.class "$class"
+    fi
+fi
+echo "Class $class loaded!"
+line_br
 
 output_step "We need the power -> sudo please!"
 sudo whoami
 line_br
 
-output_step "Install ansible"
-sudo apt-add-repository -y ppa:ansible/ansible
-sudo apt install -y ansible
-line_br
+if  ! check_cmd_present "ansible-playbook"
+then
+    output_step "Install ansible"
+    sudo apt-add-repository -y ppa:ansible/ansible
+    sudo apt install -y ansible
+    line_br
+fi
+
+output_step "Execute ansible automation for class"
+# execute ansible playbook for setup based on class
+ansible-playbook ${HOME}/.workspace-setup/class_${class}.yml
+linebr
 
 output_step "Restore dconf settings"
 echo "Restore dconf for tilix ..."
 dconf load /com/gexperts/Tilix/ < $HOME/dconf/tilix/tilix.dconf
 line_br
+

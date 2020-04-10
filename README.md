@@ -31,15 +31,14 @@ Advanced package configuration and so on can be configured using ansible:
 - Complete setup (without dev): `cd ~/workspace-setup && ansible-playbook desktop_full.yml`
 - Dev setup: `cd ~/workspace-setup && ansible-playbook dev.yml`
 
-## Profiles
+## Classes
 The following classes are planned/active:
 
 - *work*: Work related config (also applys dev config)
 - *dev*: Machine is used for development (so tools are required)
+- *mobile*: Device without the need for cinnamon desktop, only basic
+  packages will be configured and no devtools installed
 
 The bootstrap file executes the ansible playbooks according to the
-classes.
-
-Cinnamon setup via playbook must be executed manually, it may be
-asked during the bootstrap process.
+class, the convention is `class_<classname>.yml`.
 

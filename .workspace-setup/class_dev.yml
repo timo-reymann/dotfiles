@@ -1,0 +1,4 @@
+- import_playbook: basics.yml
+- import_playbook: desktop.yml
+- import_playbook: devtools.yml
+
