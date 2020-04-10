@@ -1,0 +1,16 @@
+- name: Check if bashmarks is already present
+  stat:
+    path: ~/.local/bin/bashmarks.sh
+  register: bashmarks_entrypoint
+
+- name: Clone bashmarks for install
+  git:
+    repo: "https://github.com/huyng/bashmarks.git"
+    dest: /tmp/bashmarks
+  when: not bashmarks_entrypoint.stat.present
+
+- name: Run install for bashmarks file
+  make:
+    chdir: /tmp/bashmarks
+    target: install
+  when: not bashmarks_entrypoint.stat.present

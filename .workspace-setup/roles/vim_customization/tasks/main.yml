@@ -1,0 +1,11 @@
+- name: Check if janus is already present
+  stat:
+    path: ~/.vim/janus
+  register: vim_janus_directory
+
+- name: Install janus
+  shell: curl -L https://bit.ly/janus-bootstrap | bash
+  args:
+    executable: /bin/bash
+    warn: false
+  when: not vim_janus_directory.exists

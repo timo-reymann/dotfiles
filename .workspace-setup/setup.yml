@@ -1,0 +1,23 @@
+- name: Setup workstation
+  hosts: localhost
+  roles:
+    - role: package_install
+      param_packages:
+        - neofetch
+        - vim
+        - htop
+        - tilix
+      tags:
+        - packages
+        - common
+
+    - role: vim_customization
+      tags:
+        - vim
+        - common
+        - editor
+
+    - role: bashmarks
+      tags:
+        - bashmarks
+        - common
