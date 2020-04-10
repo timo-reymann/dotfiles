@@ -11,6 +11,19 @@
         - packages
         - common
 
+    - role: package_install
+      param_packages:
+        - cinnamon
+      tags:
+        - packages
+        - desktop
+
+    - role: shell_exec
+      param_cmd: "gsettings set org.cinnamon.desktop.default-applications.terminal exec 'tilix'"
+      tags:
+        - packages
+        - desktop
+
     - role: vim_customization
       tags:
         - vim

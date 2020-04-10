@@ -1,0 +1,3 @@
+- name: Execute shell command
+  shell: "{{ param_cmd }}"
+

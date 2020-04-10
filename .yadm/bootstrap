@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+output_step() {
+    cols=$(tput cols)
+    printf "$(tput setaf 10)🚀 %s $(tput sgr0)" "$1"
+    printf "%-`expr $cols - 5 - ${#1}`s\n" "" | tr ' ' '-'
+}
+
+line_br() {
+    echo ""
+}
+
+output_step "We need the power -> sudo please!"
+sudo whoami
+line_br
+
+output_step "Install ansible"
+sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt install -y ansible
+line_br
+
