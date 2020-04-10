@@ -1,0 +1,20 @@
+- include_role:
+    name: command_available
+  vars:
+    param_command: node
+
+- name: Install nodejs
+  block:
+    - include_role:
+        name: shell_exec
+      vars:
+        param_cmd: "curl -sL https://deb.nodesource.com/setup_{{ param_version }}.x | sudo -E bash -"
+      when: "not command_available"
+
+    - include_role:
+        name: package_install
+      vars:
+        param_packages:
+          - nodejs
+  when: "not command_available"
+

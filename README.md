@@ -25,5 +25,6 @@ Config for stuff i would like to share on every machine i am using!
 Advanced package configuration and so on can be configured using ansible:
 
 - Cinnamon desktop setup: `cd ~/workspace-setup && ansible-playbook cinnamon_desktop.yml`
-- Complete setup: `cd ~/workspace-setup && ansible-playbook desktop_full.yml`
+- Complete setup (without dev): `cd ~/workspace-setup && ansible-playbook desktop_full.yml`
+- Dev setup: `cd ~/workspace-setup && ansible-playbook dev.yml`
 

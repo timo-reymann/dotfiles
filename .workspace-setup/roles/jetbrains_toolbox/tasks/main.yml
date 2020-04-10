@@ -1,0 +1,30 @@
+- include_role:
+    name: command_available
+  vars:
+    param_command: jetbrains-toolbox
+
+- name: Install toolbox
+  block:
+    - name: Create temp folder
+      file:
+        state: directory
+        path: /tmp/toolbox
+
+    - name: Download toolbox archive
+      get_url:
+        url: "https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ param_version }}.tar.gz"
+        dest: /tmp/toolbox.tar.gz
+
+    - name: Unpack archive
+      unarchive:
+        src: /tmp/toolbox.tar.gz
+        dest: /tmp/toolbox
+        extra_opts: [--strip-components=1]
+
+    - name: Copy binary to /usr/local/bin
+      copy:
+        src: /tmp/toolbox/jetbrains-toolbox
+        dest: /usr/local/bin/jetbrains-toolbox
+        mode: '0755'
+      become: true
+  when: not command_available

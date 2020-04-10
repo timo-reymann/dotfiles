@@ -1,5 +1,69 @@
 - name: Setup development environment
   hosts: localhost
+  vars:
+    node_version: "12"
+    compass_version: "1.20.5"
+    toolbox_version: "1.16.6319"
+    php_version: "7.4"
+    go_version: "1.14.2"
+
   roles:
     - role: docker
+      tags:
+        - dev
+        - docker
+
+    - role: nodejs
+      param_version: "{{ node_version }}"
+      tags:
+        - dev
+        - nodejs
+
+    - role: yarn
+      tags:
+        - dev
+        - nodejs
+        - yarn
+        - nodejs
+
+    - role: package_install
+      param_packages:
+        - python3
+        - python3-pip
+      tags:
+        - dev
+        - python
+
+    - role: php
+      param_version: "{{ php_version }}"
+      tags:
+        - dev
+        - php
+
+    - role: sdkman
+      param_command: sdk
+      tags:
+        - dev
+        - java
+        - sdkman
+
+    - role: mongodb_compass
+      param_version: "{{ compass_version }}"
+      tags:
+        - dev
+        - compass
+        - mongo
+
+    - role: jetbrains_toolbox
+      param_version: "{{ toolbox_version }}"
+      tags:
+        - dev
+        - compass
+        - toolbox
+
+    - role: golang
+      param_version: "{{ go_version }}"
+      tags:
+        - dev
+        - go
 

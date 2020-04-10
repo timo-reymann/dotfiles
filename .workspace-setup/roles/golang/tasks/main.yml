@@ -1,0 +1,26 @@
+
+- name: Download archive
+  get_url:
+    url: "https://dl.google.com/go/go{{ param_version }}.linux-amd64.tar.gz"
+    dest: /tmp/go.tar.gz
+
+- name: Empty existing directory
+  file:
+    path: /usr/local/go
+    state: absent
+  become: true
+
+- name: Ensure directory is writable
+  file:
+    path: /usr/local/go
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Unpack go
+  unarchive:
+    src: /tmp/go.tar.gz
+    dest: /usr/local
+    copy: "no"
+  become: true
+
