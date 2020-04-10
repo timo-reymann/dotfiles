@@ -1,3 +1,5 @@
 .Zoiper5/*.xml
 .Zoiper5/*.db
 .Zoiper5/*.bk
+.ssh/id_rsa*
+

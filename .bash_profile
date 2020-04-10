@@ -51,7 +51,7 @@ export -f commit-pwd
 
 # Start application detached from terminal
 hstart() {
-    nohup $1 > /dev/null 2>&1 &
+    nohup "$@" > /dev/null 2>&1 &
 }
 export -f hstart
 

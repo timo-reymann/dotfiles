@@ -73,3 +73,6 @@ echo "Restore dconf for tilix ..."
 dconf load /com/gexperts/Tilix/ < $HOME/dconf/tilix/tilix.dconf
 line_br
 
+output_step "Refresh font cache"
+sudo fc-cache -f -v
+line_br

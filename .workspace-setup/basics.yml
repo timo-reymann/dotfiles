@@ -8,6 +8,7 @@
         - htop
         - tilix
         - flameshot
+        - gpg
       tags:
         - packages
         - common
