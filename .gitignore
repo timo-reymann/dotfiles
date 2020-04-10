@@ -1,0 +1,12 @@
+*.log
+*.swp
+*.swo
+
+*secret*
+*hist*
+*viminfo*
+*compdump*
+
+*password*
+*export*
+
