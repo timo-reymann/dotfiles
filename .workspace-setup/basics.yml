@@ -1,5 +1,8 @@
 - name: Setup workstation
   hosts: localhost
+  vars:
+    qsync_version: "1.0.4.1302"
+    keeweb_version: "1.13.2"
   roles:
     - role: package_install
       param_packages:
@@ -23,4 +26,24 @@
       tags:
         - bashmarks
         - common
+
+    - role: qnap_qsync
+      param_version: "{{ qsync_version }}"
+      tags:
+        - packages
+        - common
+        - qsync
+
+    - role: keeweb
+      param_version: "{{ keeweb_version }}"
+      tags:
+        - packages
+        - common
+        - keeweb
+
+    - role: google_chrome
+      tags:
+        - packages
+        - common
+        - google-chrome
 

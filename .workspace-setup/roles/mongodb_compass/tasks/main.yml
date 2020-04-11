@@ -7,6 +7,6 @@
     name: remote_deb_install
   vars:
     param_name: mongodb-compass-community
-    param_url: "https://downloads.mongodb.com/compass/mongodb-compass_{{ compass_version }}_amd64.deb"
+    param_url: "https://downloads.mongodb.com/compass/mongodb-compass_{{ param_version }}_amd64.deb"
   when: "not command_available"
 

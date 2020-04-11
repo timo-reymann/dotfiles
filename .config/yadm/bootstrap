@@ -76,3 +76,10 @@ line_br
 output_step "Refresh font cache"
 sudo fc-cache -f -v
 line_br
+
+output_step "Run additional ansible automations"
+if ask "Do you want to install gaming stuff"
+then
+    ansible-playbook ${HOME}/.workspace-setup/gaming.yml
+fi
+line_br

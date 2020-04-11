@@ -1,0 +1,15 @@
+- name: Setup gaming stuff and apps
+  hosts: localhost
+  roles:
+    - role: snap
+      param_names:
+        - discord
+      tags:
+        - gaming
+        - snap
+        - discord
+
+    - role: ts3_client
+      tags:
+        - gaming
+        - ts3

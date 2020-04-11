@@ -9,7 +9,7 @@ theme-variant='dark'
 use-tabs=false
 prompt-on-new-session=false
 warn-vte-config-issue=false
-focus-follow-mouse=true
+focus-follow-mouse=false
 terminal-title-show-when-single=false
 window-style='disable-csd'
 

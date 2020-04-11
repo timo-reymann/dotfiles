@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=WhatsApp Web Desktop Client
+Terminal=false
+Name=WhatsApp Web
+Exec=google-chrome --app=https://web.whatsapp.com
+Type=Application
+Icon=/home/timo/Bilder/whatsapp.png

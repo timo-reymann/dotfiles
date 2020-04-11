@@ -1,0 +1,12 @@
+- include_role:
+    name: command_available
+  vars:
+    param_command: keeweb
+
+- include_role:
+    name: remote_deb_install
+  vars:
+    param_name: keeweb
+    param_url: "https://github.com/keeweb/keeweb/releases/download/v{{ param_version }}/KeeWeb-{{ param_version }}.linux.x64.deb"
+  when: "not command_available"
+
