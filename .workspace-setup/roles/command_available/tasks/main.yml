@@ -2,6 +2,7 @@
   shell: "command -v {{ param_command }} > /dev/null 2>&1"
   register: command_available_execution
   ignore_errors: true
+  failed_when: false
 
 - set_fact:
     command_available: "{{ command_available_execution.rc == 0 }}"
