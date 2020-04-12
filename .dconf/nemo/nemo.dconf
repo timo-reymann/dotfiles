@@ -1,0 +1,20 @@
+[preferences]
+show-full-path-titles=false
+thumbnail-limit=uint64 104857600
+default-folder-viewer='list-view'
+size-prefixes='base-10'
+show-hidden-files=true
+date-format='iso'
+last-server-connect-method=3
+show-location-entry=true
+
+[window-state]
+sidebar-width=387
+side-pane-view='places'
+geometry='2560x695+2560+496'
+start-with-sidebar=true
+maximized=true
+sidebar-bookmark-breakpoint=4
+
+[list-view]
+search-visible-columns=['name', 'size', 'type', 'where']
