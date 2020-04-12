@@ -1,0 +1,21 @@
+[dock1]
+icon-size=46
+show-dock-item=false
+position='bottom'
+dock-items=['nemo.dockitem', 'google-chrome.dockitem', 'net.lutris.Lutris.dockitem']
+unhide-delay=0
+items-alignment='center'
+theme='Transparent'
+hide-mode='dodge-active'
+pinned-only=false
+auto-pinning=true
+alignment='center'
+zoom-percent=164
+hide-delay=200
+zoom-enabled=true
+monitor=''
+lock-items=false
+tooltips-enabled=true
+pressure-reveal=false
+offset=8
+current-workspace-only=false

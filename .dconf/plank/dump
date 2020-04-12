@@ -1,0 +1,3 @@
+#!/bin/bash
+dconf dump /net/launchpad/plank/docks/ > plank.dconf
+
