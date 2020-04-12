@@ -78,7 +78,7 @@
 
     - role: snap
       param_names:
-        - kubelet
+        - kubectl
         - redis-desktop-manager
         - postman
       tags:
