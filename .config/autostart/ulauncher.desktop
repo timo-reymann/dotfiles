@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=ulauncher
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en]=ulauncher
+Name=ulauncher
+Comment[en]=
+Comment=

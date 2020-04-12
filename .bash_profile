@@ -18,6 +18,8 @@ alias gpull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev |
 alias suvi="sudo vim"
 alias pls="sudo \$(fc -n -l -1 -1)"
 alias flush-dns="sudo systemd-resolve --flush-caches"
+alias hsearch="history | peco"
+alias pdoc="docker ps | peco | awk '{print \$1;}' | tr '\n' ' ' | xargs docker"
 
 # shell bookmarks
 if [ -f ~/.local/bin/bashmarks.sh ]
