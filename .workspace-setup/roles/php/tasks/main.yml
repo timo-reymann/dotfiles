@@ -1,4 +1,9 @@
 - include_role:
+    name: ubuntu_ppa
+  vars:
+    param_name: "ondrej/php"
+
+- include_role:
     name: package_install
   vars:
     param_packages:
