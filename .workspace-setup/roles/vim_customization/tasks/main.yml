@@ -3,6 +3,13 @@
     path: ~/.vim/janus
   register: vim_janus_directory
 
+- include_role:
+    name: snap
+  vars:
+    param_names:
+      - ruby
+  when: not vim_janus_directory.stat.exists
+
 - name: Install janus
   shell: curl -L https://bit.ly/janus-bootstrap | bash
   args:

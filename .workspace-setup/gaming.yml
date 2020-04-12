@@ -9,7 +9,8 @@
         - snap
         - discord
 
-    - role: ts3_client
+    - role: lutris
       tags:
         - gaming
-        - ts3
+        - lutris
+
