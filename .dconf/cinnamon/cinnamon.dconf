@@ -152,15 +152,16 @@ slowkeys-enable=false
 event-sounds=false
 
 [desktop/background]
-picture-uri='file:///home/timo/Bilder/Wallpapers/52RY9Px.jpg'
+picture-uri='file://{{HOME}}/.images/cosm.jpg'
 color-shading-type='vertical'
 primary-color='#000000000000'
 picture-options='spanned'
 secondary-color='#555557575353'
 
 [desktop/background/slideshow]
-image-source='xml:///usr/share/gnome-background-properties/gnome-backgrounds.xml'
+image-source='directory://{{HOME}}/Bilder'
 delay=15
+slideshow-enabled=false
 
 [theme]
 symbolic-relative-size=0.67000000000000004
