@@ -1,0 +1,11 @@
+#!/bin/bash
+# Helper for commiting all changes in the current directory, prefixing the directory name
+
+if [ -z "$1" ]
+then
+    echo "❌ Please specifiy a commit message!"
+    exit 2
+fi
+
+commit "$(basename $PWD): $@"
+

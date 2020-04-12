@@ -15,45 +15,9 @@ alias commit="git stage . && git commit -m"
 alias gpush="git push"
 alias gpull="git pull --rebase --all --recurse-submodules"
 alias gpull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull"
-alias pls="sudo"
 alias suvi="sudo vim"
+alias pls="sudo \$(fc -n -l -1 -1)"
 alias flush-dns="sudo systemd-resolve --flush-caches"
-# Export helper to fix m$ bullshit and utf8 probs
-to-utf8() {
-    if [ -z "$1" ] || [ ! -e "$1" ]
-        then
-        echo "❌ Please specify a valid file to fix!"
-        return
-    fi
-
-    iconv -t UTF-8 "$1" -o "$1" &> /dev/null && \
-    dos2unix "$1" &> /dev/null &&
-    echo "✔️  Fixed charset and m$ bullshit!"
-
-    if [ $? != 0 ]
-    then
-        echo "❌ Error processing file ..."
-    fi
-}
-export -f to-utf8
-
-# Export helper for commiting current directory
-commit-pwd() {
-    if [ -z "$1" ]
-    then
-        echo "❌ Please specifiy a commit message!"
-        return
-    fi
-
-    commit "$(basename $PWD): $@"
-}
-export -f commit-pwd
-
-# Start application detached from terminal
-hstart() {
-    nohup "$@" > /dev/null 2>&1 &
-}
-export -f hstart
 
 # shell bookmarks
 if [ -f ~/.local/bin/bashmarks.sh ]
@@ -72,3 +36,4 @@ export EDITOR=vim
 
 # Run neofetch
 neofetch
+

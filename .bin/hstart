@@ -1,0 +1,5 @@
+#!/bin/bash
+# Helper to start application detached from terminal
+
+nohup "$@" > /dev/null 2>&1 &
+
