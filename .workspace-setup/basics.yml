@@ -48,3 +48,9 @@
         - common
         - google-chrome
 
+    - role: snap
+      tags:
+        - snap
+        - common
+      param_names:
+        - peco
