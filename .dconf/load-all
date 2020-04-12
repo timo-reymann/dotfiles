@@ -1,0 +1,12 @@
+#!/bin/bash
+
+root_dir=$PWD
+
+for dir in $(find * -maxdepth 1  -type d);
+do
+    echo "Loading dconf for $dir ..."
+    cd $dir
+    ./load
+    cd $root_dir
+done
+
