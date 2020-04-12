@@ -12,6 +12,7 @@
         - tilix
         - flameshot
         - gpg
+        - make
       tags:
         - packages
         - common
