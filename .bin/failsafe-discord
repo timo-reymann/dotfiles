@@ -1,12 +1,11 @@
 #!/bin/bash
 
-discord
-
 while [ true ]
 do
-    if [ "$?" != "0" ]
+    discord
+    if [ $status -eq 0 ]
     then
-        discord
+        exit 0
     fi
 done
 
