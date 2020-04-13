@@ -54,3 +54,10 @@
         - common
       param_names:
         - peco
+
+    - role: anydesk
+      tags:
+        - common
+        - packages
+        - anydesk
+      param_version: "5.5.4-1"
