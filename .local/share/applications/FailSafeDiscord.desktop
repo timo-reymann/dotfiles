@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Failsafe discord wrapper
+Terminal=false
+Name=Failsafe Discord
+Exec=bash -c "$HOME/.bin/failsafe-discord"
+Type=Application
+

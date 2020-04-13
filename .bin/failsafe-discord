@@ -1,0 +1,12 @@
+#!/bin/bash
+
+discord
+
+while [ true ]
+do
+    if [ "$?" != "0" ]
+    then
+        discord
+    fi
+done
+
