@@ -15,7 +15,7 @@ desktop-effects-minimize-effect='traditional'
 panels-scale-text-icons=['1:true', '2:true']
 desklet-snap-interval=25
 panels-height=['1:28', '2:25']
-next-applet-id=38
+next-applet-id=39
 panel-launchers=['DEPRECATED']
 desktop-effects-map-transition='easeOutQuad'
 desktop-effects-unmaximize-effect='none'
@@ -24,7 +24,7 @@ desktop-effects-tile-transition='easeInQuad'
 desktop-effects-maximize-time=100
 desktop-effects-maximize-effect='none'
 panels-resizable=['1:true', '2:false']
-enabled-applets=['panel1:right:4:notifications@cinnamon.org:16', 'panel1:center:0:calendar@cinnamon.org:17', 'panel1:right:2:sound@cinnamon.org:25', 'panel1:right:3:user@cinnamon.org:28', 'panel1:left:0:systray@cinnamon.org:37']
+enabled-applets=['panel1:right:5:notifications@cinnamon.org:16', 'panel1:center:0:calendar@cinnamon.org:17', 'panel1:right:3:sound@cinnamon.org:25', 'panel1:right:4:user@cinnamon.org:28', 'panel1:left:0:systray@cinnamon.org:37', 'panel1:right:0:network@cinnamon.org:38']
 desktop-effects-minimize-time=200
 alttab-switcher-delay=100
 desktop-effects-tile-effect='none'
@@ -182,9 +182,9 @@ event-sounds=false
 
 [desktop/background]
 picture-uri='file://{{HOME}}/.images/cosm.jpg'
-color-shading-type='vertical'
+color-shading-type='solid'
 primary-color='#000000000000'
-picture-options='spanned'
+picture-options='zoom'
 secondary-color='#555557575353'
 
 [desktop/background/slideshow]
