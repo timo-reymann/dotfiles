@@ -3,7 +3,11 @@
 [user]
 	name = Timo Reymann
 	email = mail@timo-reymann.de
+{% if yadm.class == "work" %}
     signingkey = 970F9064
+{% else %}
+	signingkey = 841A0138
+{% endif %}
 [commit]
 	gpgsign = true
 [core]
