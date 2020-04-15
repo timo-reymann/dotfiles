@@ -60,19 +60,10 @@
         "default": "mute",
         "options": {
             "Toggle Mute": "mute",
-            "Toggle Mute output": "out_mute",
-            "Toggle Mute input": "in_mute",
             "Toggle Play / Pause": "player"
         },
         "description": "Action on middle click",
         "value": "mute"
-    },
-    "horizontalScroll": {
-        "type": "switch",
-        "default": false,
-        "description": "Use horizontal scrolling to move between tracks",
-        "dependency": "playerControl",
-        "value": false
     },
     "showalbum": {
         "type": "switch",
@@ -81,18 +72,11 @@
         "dependency": "playerControl",
         "value": false
     },
-    "keepAlbumAspectRatio": {
-        "type": "switch",
-        "default": true,
-        "description": "Keep album art aspect ratio",
-        "dependency": "playerControl",
-        "value": true
-    },
     "hideSystray": {
         "type": "switch",
         "description": "Hide system tray icons for compatible players",
         "default": true,
         "value": true
     },
-    "__md5__": "cd4c072c97ce55f6107a61403597ba54"
+    "__md5__": "5ded76da252c95dec6318f480a942bc2"
 }
