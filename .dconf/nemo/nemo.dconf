@@ -11,10 +11,14 @@ show-location-entry=true
 [window-state]
 sidebar-width=387
 side-pane-view='places'
-geometry='2560x695+2560+496'
+geometry='1280x1388+3190+26'
 start-with-sidebar=true
-maximized=true
+maximized=false
 sidebar-bookmark-breakpoint=4
+
+[desktop]
+volumes-visible=false
+trash-icon-visible=true
 
 [list-view]
 search-visible-columns=['name', 'size', 'type', 'where']
