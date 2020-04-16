@@ -11,3 +11,4 @@
 *export*
 .bashrc
 **/__pycache__/**
+.local/share/ulauncher/app_stat_v2.db

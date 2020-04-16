@@ -1,28 +1,38 @@
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+
 [user]
 	name = Timo Reymann
-	email = mail@timo-reymann.de
 {% if yadm.class == "work" %}
-    signingkey = 970F9064
+	signingkey = 970F9064
+	email = Timo.Reymann@witt-gruppe.eu
 {% else %}
-    signingkey = 841A0138
+	email = mail@timo-reymann.de
+	signingkey = 841A0138
 {% endif %}
+
 [commit]
 	gpgsign = true
+
 [core]
   autocrlf = input
   editor = vim
+
 [push]
   default = current
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-#[color]
-#	ui = always
+
+[color]
+	ui = always
+
 [github]
   username = timo-reymann
+
 [alias]
 	release = semver-git-tag
+
