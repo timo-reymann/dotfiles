@@ -1,9 +1,9 @@
 # Function to get branch of current directory or empty string if no git folder
 git_branch() {
-  output="$(git branch 2> /dev/null | grep '^*' | colrm 1 2)"
-  if [ ! -z $output ]
+  branch_name=$((git symbolic-ref HEAD 2>/dev/null || echo "")|cut -d/ -f3-)
+  if [ ! -z "$branch_name" ]
     then
-    echo "  🌳 $output"
+    echo "  🌳 $branch_name"
   fi
 }
 

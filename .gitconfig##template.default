@@ -27,9 +27,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
-[color]
-	ui = always
-
 [github]
   username = timo-reymann
 
