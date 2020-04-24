@@ -18,8 +18,10 @@
     autocrlf = input
     editor = vim
 
+{% if yadm.class == "work" %}
 [protocol]
     version = 2
+{% endif %}
 
 [push]
     default = current
