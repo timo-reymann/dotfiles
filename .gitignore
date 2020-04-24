@@ -13,3 +13,4 @@
 **/__pycache__/**
 .local/share/ulauncher/app_stat_v2.db
 .local/share/ulauncher/extensions/com.github.pywkm.ulauncher-spotify/__pycache__
+.local/share/fonts/.uuid
