@@ -13,4 +13,7 @@
 **/__pycache__/**
 .local/share/ulauncher/app_stat_v2.db
 .local/share/ulauncher/extensions/com.github.pywkm.ulauncher-spotify/__pycache__
+<<<<<<< HEAD
 .local/share/fonts/.uuid
+.config/autostart/QNAPQsyncClient.desktop
+

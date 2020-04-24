@@ -2,7 +2,7 @@
 icon-size=46
 show-dock-item=false
 position='bottom'
-dock-items=['nemo.dockitem', 'google-chrome.dockitem', 'net.lutris.Lutris.dockitem']
+dock-items=['nemo.dockitem', 'google-chrome.dockitem']
 unhide-delay=0
 items-alignment='center'
 theme='Transparent'

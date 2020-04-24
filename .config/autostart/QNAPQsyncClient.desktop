@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=QNAP Qsync Client
-Exec=/usr/local/bin/QNAP/QsyncClient/Qsync.sh
-Type=Application
-Icon=/usr/share/pixmaps/Qsync.png
-X-Desktop-File-Install-Version=0.22
-Name[en_US]=QNAPQsyncClient
-X-GNOME-Autostart-enabled=false

@@ -2,18 +2,19 @@
 desktop-effects-unmaximize-transition='easeNone'
 desktop-effects-maximize-transition='easeInExpo'
 applet-cache-updated=1569072722
+active-display-scale=1
 desktop-effects-map-effect='traditional'
 hotcorner-layout=['expo:false:0', 'scale:false:0', 'scale:false:0', 'desktop:false:0']
 desktop-effects-close-effect='traditional'
 workspace-osd-duration=400
-enabled-desklets=@as []
 desktop-effects-unmaximize-time=100
+enabled-desklets=@as []
 desktop-effects-map-time=175
 panel-zone-icon-sizes='[{"panelId":1,"left":0,"center":0,"right":0}]'
 desktop-effects-minimize-effect='traditional'
 panels-scale-text-icons=['1:true', '2:true']
 desklet-snap-interval=25
-panels-height=['1:26', '2:25']
+panels-height=['1:28', '2:25']
 next-applet-id=38
 panel-launchers=['DEPRECATED']
 desktop-effects-map-transition='easeOutQuad'
@@ -25,33 +26,43 @@ desktop-effects-maximize-effect='none'
 panels-resizable=['1:true', '2:false']
 enabled-applets=['panel1:right:4:notifications@cinnamon.org:16', 'panel1:center:0:calendar@cinnamon.org:17', 'panel1:right:2:sound@cinnamon.org:25', 'panel1:right:3:user@cinnamon.org:28', 'panel1:left:0:systray@cinnamon.org:37']
 desktop-effects-minimize-time=200
-desktop-effects-minimize-transition='easeInQuad'
+alttab-switcher-delay=100
 desktop-effects-tile-effect='none'
 desktop-effects-close-transition='easeOutQuad'
+desktop-effects-minimize-transition='easeInQuad'
 panel-edit-mode=false
 panels-show-delay=['1:0', '2:0']
 desklet-cache-updated=1586721374
-no-adjacent-panel-barriers=false
 desktop-effects-close-time=175
-panels-hide-delay=['1:0', '2:0']
 next-desklet-id=3
+panels-hide-delay=['1:0', '2:0']
+no-adjacent-panel-barriers=false
 workspace-osd-x=50
 workspace-osd-y=50
 desktop-effects-tile-time=100
 panels-autohide=['1:false', '2:false']
+device-aliases=['/org/freedesktop/UPower/devices/battery_BAT0:=LGC 01AV493']
 
 [settings-daemon/plugins/power]
-lock-on-suspend=false
 button-power='shutdown'
+sleep-inactive-battery-timeout=0
+lock-on-suspend=false
+lid-close-ac-action='nothing'
+lid-close-battery-action='suspend'
+sleep-display-battery=1800
 sleep-display-ac=0
 sleep-inactive-ac-timeout=0
 
 [settings-daemon/plugins/xsettings]
+buttons-have-icons=true
 menus-have-icons=true
 
 [settings-daemon/peripherals/touchpad]
 motion-threshold=1
 touchpad-enabled=false
+
+[settings-daemon/peripherals/touchscreen]
+orientation-lock=false
 
 [settings-daemon/peripherals/keyboard]
 repeat-interval=uint32 30
@@ -81,6 +92,8 @@ tile-hud-threshold=25
 cursor-size=24
 first-day-of-week=1
 cursor-theme='DMZ-Black'
+scaling-factor=uint32 1
+toolkit-accessibility=false
 clock-show-seconds=true
 cursor-blink-time=1200
 icon-theme='Faba'
@@ -97,6 +110,7 @@ looking-glass-keybinding=@as []
 custom-list=['custom0']
 
 [desktop/keybindings/media-keys]
+area-screenshot=@as []
 screensaver=['<Control><Alt>l', 'XF86ScreenSaver', '<Super>l']
 screenshot=@as []
 
@@ -122,11 +136,19 @@ fade-on-mouseover=false
 [desktop/session]
 idle-delay=uint32 900
 
+[desktop/privacy]
+recent-files-max-age=-1
+remember-recent-files=true
+
 [desktop/wm/preferences]
 min-window-opacity=30
 theme='Arc-Darker'
 num-workspaces=3
 workspace-names=@as []
+
+[desktop/a11y/applications]
+screen-keyboard-enabled=false
+screen-reader-enabled=false
 
 [desktop/a11y/keyboard]
 slowkeys-beep-press=true
@@ -148,6 +170,13 @@ stickykeys-modifier-beep=true
 stickykeys-two-key-off=true
 mousekeys-init-delay=160
 slowkeys-enable=false
+
+[desktop/a11y/mouse]
+secondary-click-enabled=false
+secondary-click-time=1.2
+dwell-time=1.2
+dwell-threshold=10
+dwell-click-enabled=false
 
 [desktop/sound]
 event-sounds=false

@@ -15,20 +15,20 @@
 	gpgsign = true
 
 [core]
-  autocrlf = input
-  editor = vim
+    autocrlf = input
+    editor = vim
+
+[protocol]
+    version = 2
 
 [push]
-  default = current
+    default = current
 
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-
-[color]
-	ui = always
 
 [github]
   username = timo-reymann

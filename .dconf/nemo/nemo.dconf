@@ -1,11 +1,13 @@
 [preferences]
 show-full-path-titles=false
+tooltips-show-file-type=false
 thumbnail-limit=uint64 104857600
 default-folder-viewer='list-view'
 size-prefixes='base-10'
 show-hidden-files=true
 date-format='iso'
 last-server-connect-method=3
+tooltips-in-list-view=true
 show-location-entry=true
 
 [window-state]
@@ -21,4 +23,6 @@ volumes-visible=false
 trash-icon-visible=true
 
 [list-view]
+default-visible-columns=['name', 'size', 'date_modified', 'permissions', 'owner']
 search-visible-columns=['name', 'size', 'type', 'where']
+default-column-order=['name', 'size', 'date_modified', 'permissions', 'owner', 'type', 'detailed_type', 'date_modified_with_time', 'group', 'mime_type', 'octal_permissions', 'selinux_context', 'where', 'date_accessed']
