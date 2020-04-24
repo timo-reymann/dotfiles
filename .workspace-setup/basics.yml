@@ -4,6 +4,13 @@
     qsync_version: "1.0.4.1302"
     keeweb_version: "1.13.2"
   roles:
+    - role: ubuntu_ppa
+      param_name: git-core/ppa
+      tags:
+        - packages
+        - common
+        - ppa
+
     - role: package_install
       param_packages:
         - neofetch
@@ -13,6 +20,7 @@
         - flameshot
         - gpg
         - make
+        - git
       tags:
         - packages
         - common
