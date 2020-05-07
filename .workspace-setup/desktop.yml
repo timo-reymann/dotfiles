@@ -11,10 +11,12 @@
     - role: package_install
       param_packages:
         - cinnamon
+        - lightdm
         - plank
         - ulauncher
         - snapd
         - arc-theme
+        - lightdm-gtk-greeter
       tags:
         - packages
         - desktop
