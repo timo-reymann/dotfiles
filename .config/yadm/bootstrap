@@ -34,6 +34,12 @@ ask() {
   return 0
 }
 
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    output_step "MacOS detected, not executing ansible stuff"
+    exit 0
+fi
+
 output_step "Loading class"
 class=$(yadm config local.class)
 if [ -z "$class" ]
