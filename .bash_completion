@@ -1,0 +1,8 @@
+#!/bin/bash
+for bcfile in ~/.bash_completion.d/* ; do
+  source $bcfile
+done
+
+for bcfile in ~/.bash_completion.d/* ; do
+    source $bcfile
+done
