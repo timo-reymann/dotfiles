@@ -1,0 +1,9 @@
+- name: Install libsecret packages
+  apt:
+    name:
+      - libsecret-1-0
+      - libsecret-1-dev
+- name: Run make
+  make:
+    chdir: /usr/share/doc/git/contrib/credential/libsecret
+
