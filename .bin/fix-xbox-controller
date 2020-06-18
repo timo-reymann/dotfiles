@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo -s -- bash -c 'echo 1 > /sys/module/bluetooth/parameters/disable_ertm'
