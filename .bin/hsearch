@@ -1,0 +1,17 @@
+#!/bin/bash
+HISTFILE=~/.bash_history
+set -o history
+
+selection="$(history | peco --prompt "Search in history: " | awk '{$1="";print substr($0,2)}')"
+
+echo -e "Execute `tput setaf 3`${selection}`tput sgr0`?"
+
+read -n1 -r -p "[y/n]   `tput setaf 3`" response
+printf "$(tput sgr0)" ""
+case "$response" in
+    [yY][eE][sS]|[yY])
+        echo ""
+        eval "$selection"
+        ;;
+esac
+

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+output_step "We need the power -> sudo please!"
+line_br
+echo "If the passwordless sudo is not already configured: "
+echo " /etc/sudoers:"
+echo " $(tput setaf 6)%sudo   ALL=(ALL:ALL) ALL$(tput sgr0) => $(tput setaf 6)%sudo   ALL=(ALL:ALL) NOPASSWD:ALL$(tput sgr0)"
+sudo whoami > /dev/null
+line_br
+
+if  ! check_cmd_present "ansible-playbook"
+then
+    output_step "Install ansible"
+    sudo apt-add-repository -y ppa:ansible/ansible
+    sudo apt install -y ansible
+    line_br
+fi
+
+output_step "Execute ansible automation for class ${class}"
+# execute ansible playbook for setup based on class
+ansible-playbook ${HOME}/.workspace-setup/class_${class}.yml
+line_br
+
+output_step "Restore dconf settings"
+base_dir=$PWD
+cd ${HOME}/.dconf
+./load-all
+cd $base_dir
+line_br
+
+output_step "Refresh font cache"
+sudo fc-cache -f -v
+line_br
+
+output_step "Run additional ansible automations"
+if ask "Do you want to install gaming stuff"
+then
+    ansible-playbook ${HOME}/.workspace-setup/gaming.yml
+fi
+line_br
+

@@ -53,6 +53,9 @@ menus-have-icons=true
 motion-threshold=1
 touchpad-enabled=false
 
+[settings-daemon/peripherals/touchscreen]
+orientation-lock=false
+
 [settings-daemon/peripherals/keyboard]
 repeat-interval=uint32 30
 delay=uint32 500
@@ -101,7 +104,10 @@ screensaver=['<Control><Alt>l', 'XF86ScreenSaver', '<Super>l']
 screenshot=@as []
 
 [desktop/media-handling]
+autorun-x-content-start-app=['x-content/unix-software']
 autorun-never=false
+autorun-x-content-ignore=@as []
+autorun-x-content-open-folder=@as []
 
 [desktop/screensaver]
 screensaver-name='xscreensaver@cinnamon.org'
@@ -154,15 +160,16 @@ event-sounds=false
 
 [desktop/background]
 picture-uri='file://{{HOME}}/.images/cosm.jpg'
-color-shading-type='vertical'
+color-shading-type='horizontal'
 primary-color='#000000000000'
 picture-options='spanned'
-secondary-color='#555557575353'
+secondary-color='#0bf202260226'
 
 [desktop/background/slideshow]
-image-source='directory://{{HOME}}/Bilder'
-delay=15
-slideshow-enabled=false
+image-source='directory://{{HOME}}/.images'
+random-order=true
+delay=10
+slideshow-enabled=true
 
 [theme]
 symbolic-relative-size=0.67000000000000004

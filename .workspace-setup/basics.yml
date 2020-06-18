@@ -25,6 +25,12 @@
         - packages
         - common
 
+    - role: libsecret-git
+      tags:
+        - packages
+        - common
+        - libsecret
+
     - role: vim_customization
       tags:
         - vim
