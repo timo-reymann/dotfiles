@@ -28,8 +28,10 @@ then
     source ~/.local/bin/bashmarks.sh
 fi
 
+export GOPATH="$HOME/go"
+
 # Add bin
-export PATH="$PATH:$HOME/.bin:/usr/local/go/bin"
+export PATH="$PATH:$HOME/.bin:/usr/local/go/bin:$GOPATH/bin"
 
 # Customize bash colors
 export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h 📂 \[\033[92m\]\w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\033[00m\] ⏰ $(date "+%H:%m:%S") \[\033[00m\]\n$ '
