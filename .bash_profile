@@ -21,6 +21,7 @@ alias pls="sudo \$(fc -n -l -1 -1)"
 alias flush-dns="sudo systemd-resolve --flush-caches"
 alias pdoc="docker ps | peco | awk '{print \$1;}' | tr '\n' ' ' | xargs docker"
 alias find-bigboi="sudo du -cks * | sort -rn | head"
+alias grep="grep --color=auto"
 
 # shell bookmarks
 if [ -f ~/.local/bin/bashmarks.sh ]
