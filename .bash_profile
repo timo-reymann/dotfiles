@@ -1,5 +1,5 @@
 # Function to get branch of current directory or empty string if no git folder
-git_branch() {
+__git_branch() {
   branch_name=$((git symbolic-ref HEAD 2>/dev/null || echo "")|cut -d/ -f3-)
   if [ ! -z "$branch_name" ]
     then
@@ -7,7 +7,7 @@ git_branch() {
   fi
 }
 
-virtualenv_info() {
+__virtualenv_info() {
     if [[ -n "$VIRTUAL_ENV" ]]
     then
         # Strip out the path and just leave the env name
@@ -48,7 +48,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Add bin
 export PATH="$PATH:$HOME/.bin:/usr/local/go/bin:$GOPATH/bin"
 # Customize bash colors
-export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;96m\]\[\e[1m\]$(git_branch)\[\e[33m\]$(virtualenv_info)\[\033[00m\]  ⏰ $(date "+%H:%m:%S") \[\033[00m\]\n$ '
+export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;96m\]\[\e[1m\]$(__git_branch)\[\e[33m\]$(__virtualenv_info)\[\033[00m\]  ⏰ $(date "+%H:%m:%S") \[\033[00m\]\n$ '
 # Environment variables
 export EDITOR=vim
 
