@@ -78,11 +78,14 @@
     - role: snap
       param_names:
         - vscode
+        - insomnia-designer
+        - insomnia
       tags:
         - editor
         - dev
         - vscode
         - snap
+        - insomnia
 
     - role: snap
       param_names:
