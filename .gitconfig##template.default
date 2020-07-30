@@ -26,6 +26,9 @@
 [push]
     default = current
 
+[pull]
+    ff = only
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
