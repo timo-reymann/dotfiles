@@ -15,11 +15,13 @@ Config for stuff i would like to share on every machine i am using!
 - bash stuff
 
 # How to get started
-
 These dotfiles make use of [yadm](https://yadm.io/) to handle all kinds
 of stuff.
 
 ## Basic
+Before initializing yadm stuff, you need to do different stuff,
+depending on the platform.
+
 ### Ubuntu
 - Install yadm: ``sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm``
 - Let the bootstrap install the required stuff
@@ -32,13 +34,13 @@ of stuff.
 - Run bootstrap script
 - Enable keyboard layouts manually
 
-## Advanced
+## Advanced (Ubuntu only)
 Advanced package configuration and so on can be configured using ansible.
 
 For every class there is a playbook including the basic operations. If
 anything special is required, just execute the playbooks seperately.
 
-### Classes
+### Classes (Ubuntu only)
 The following classes are planned/active:
 
 - *work*: Work related config (also applys dev config)
