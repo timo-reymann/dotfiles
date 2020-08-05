@@ -30,6 +30,7 @@ of stuff.
 - Install yadm using brew: `brew install yadm`
 - Install ansible using brew: `brew install ansible`
 - Run bootstrap script
+- Enable keyboard layouts manually
 
 ## Advanced
 Advanced package configuration and so on can be configured using ansible.
