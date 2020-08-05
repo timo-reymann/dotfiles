@@ -50,3 +50,7 @@ brew install neofetch
 brew cask install iterm2
 line_br
 
+output_step "Install keyboard layouts"
+source ~/.osx-keyboardlayouts/install
+line_br
+

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for layout in `ls *.keylayout`
+do
+    cp $layout  /Library/Keyboard Layouts/
+done
+
