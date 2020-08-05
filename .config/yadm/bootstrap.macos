@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo "WIP"
+output_step "Set settings using defaults command"
+defaults write com.apple.finder AppleShowAllFiles YES
+line_br
+
