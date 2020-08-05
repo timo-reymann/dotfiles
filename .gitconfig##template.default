@@ -1,5 +1,8 @@
+# generated using yadm template
+{% if yadm.os == 'Linux' %}
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+{% endif %}
 
 [user]
 	name = Timo Reymann
@@ -26,9 +29,6 @@
 [push]
     default = current
 
-#[pull]
-#   ff = only
-
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -36,7 +36,7 @@
 	smudge = git-lfs smudge -- %f
 
 [github]
-  username = timo-reymann
+	username = timo-reymann
 
 [alias]
 	release = semver-git-tag
