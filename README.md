@@ -20,9 +20,16 @@ These dotfiles make use of [yadm](https://yadm.io/) to handle all kinds
 of stuff.
 
 ## Basic
+### Ubuntu
 - Install yadm: ``sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm``
 - Let the bootstrap install the required stuff
-- Decrypt secret files: ``sudo yadm decrypt``
+
+### MacOS
+- Install brew
+- Install git using brew: `brew install git`
+- Install yadm using brew: `brew install yadm`
+- Install ansible using brew: `brew install ansible`
+- Run bootstrap script
 
 ## Advanced
 Advanced package configuration and so on can be configured using ansible.

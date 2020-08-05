@@ -27,3 +27,8 @@ defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 line_br
 
+output_step "Install additional software using brew"
+brew install neofetch
+brew cask install iterm2
+line_br
+
