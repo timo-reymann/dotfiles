@@ -56,3 +56,14 @@ defaults write -g NSUserKeyEquivalents -dict-add "Copy" -string "^c"
 defaults write -g NSUserKeyEquivalents -dict-add "Paste" -string "^v"
 line_br
 
+output_step "Install and configure vim"
+brew install macvim
+curl -L https://bit.ly/janus-bootstrap | bash
+line_br
+
+output_step "Setup bashmarks"
+cd /tmp
+git clone https://github.com/huyng/bashmarks.git
+cd bashmarks
+make install
+line_br
