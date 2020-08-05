@@ -67,3 +67,9 @@ git clone https://github.com/huyng/bashmarks.git
 cd bashmarks
 make install
 line_br
+
+output_step "Customize iTerm2"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+line_br
+

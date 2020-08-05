@@ -40,7 +40,7 @@ Advanced package configuration and so on can be configured using ansible.
 For every class there is a playbook including the basic operations. If
 anything special is required, just execute the playbooks seperately.
 
-### Classes (Ubuntu only)
+### Classes
 The following classes are planned/active:
 
 - *work*: Work related config (also applys dev config)
