@@ -32,7 +32,10 @@ depending on the platform.
 - Install yadm using brew: `brew install yadm`
 - Install ansible using brew: `brew install ansible`
 - Run bootstrap script
-- Enable keyboard layouts manually
+- Enable keyboard layouts manually, they were copied from
+  `.osx-keyboardlayouts` and are available under `System Settings >
+Keyboard > Input Sources`
+- Download and install [VEER](http://veeer.io) to make macos window manager usable
 
 ## Advanced (Ubuntu only)
 Advanced package configuration and so on can be configured using ansible.
