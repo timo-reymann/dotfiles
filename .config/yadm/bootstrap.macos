@@ -1,20 +1,23 @@
 #!/bin/bash
 
 output_step "Disable retarded MacOs 'features'"
-# disable 'are you sure you want to launch'
+echo "disable 'are you sure you want to launch'"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
-# disable 'natural' scrolling
+echo "disable 'natural' scrolling"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
-# dialogs and useless warnings
+echo "disable dialogs and useless warnings"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-# fix scrolling
+echo "fix scrolling"
 brew cask install scroll-reverser
-# always show scroll bars
+echo "always show scroll bars"
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-# disable iCloud default save location
+echo "disable iCloud default save location"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-# fix bluetooth quality
+echo "fix bluetooth quality"
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+echo "fix keyboard slowness"
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -integer 15
 line_br
 
 output_step "Enable access for assistive devices"
