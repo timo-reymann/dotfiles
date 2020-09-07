@@ -1,0 +1,4 @@
+#!/bin/bash
+export ANSIBLE_ROLES_PATH=$PWD/roles
+ansible-playbook "$@"
+
