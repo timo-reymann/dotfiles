@@ -7,8 +7,8 @@
 [user]
 	name = Timo Reymann
 {% if yadm.class == "work" %}
-	signingkey = 970F9064
-	email = Timo.Reymann@witt-gruppe.eu
+	signingkey = 5ECE9ABC
+	email = Timo.Reymann@trustedshops.de
 {% else %}
 	email = mail@timo-reymann.de
 	signingkey = 841A0138
