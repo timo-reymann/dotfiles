@@ -29,7 +29,9 @@ output_step "Customize dock"
 sudo defaults write /Library/Preferences/com.apple.dock autohide -bool YES
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock tilesize -int 36
-defaults write com.apple.dock autohide-delay -float 3
+defaults write com.apple.dock autohide-delay -int 0;
+defaults write com.apple.dock autohide-time-modifier -float 1.0;
+killall Dock
 line_br
 
 output_step "Customize activity manager"
