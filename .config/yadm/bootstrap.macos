@@ -57,6 +57,8 @@ output_step "Install keyboard layouts"
 source ~/.osx-keyboardlayouts/install
 defaults write -g NSUserKeyEquivalents -dict-add "Copy" -string "^c"
 defaults write -g NSUserKeyEquivalents -dict-add "Paste" -string "^v"
+defaults write -g NSUserKeyEquivalents -dict-add "Select All" -string "^a"
+defaults write -g NSUserKeyEquivalents -dict-add "Cut" -string "^x"
 line_br
 
 output_step "Install and configure vim"
