@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ -f "roles/requirements.yaml" ]
+if [ -f "requirements.yaml" ]
 then
     file="requirements.yaml"
 else
     file="requirements.yml"
 fi
 
-ansible-galaxy install -r "roles/${file}" -p roles/ --keep-scm-meta -f
+ansible-galaxy install -r "${file}" -p roles/ --keep-scm-meta -f
 
