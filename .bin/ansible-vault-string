@@ -1,3 +1,9 @@
 #!/bin/bash
 
+if [[ -z "$1"  ]] || [[ -z "$2"  ]]
+then
+    echo -e "Usage: `basename $0` vault-file-path string-to-encrypt"
+    exit 2
+fi
+
 ansible-vault encrypt_string --vault-password-file $1 <<< $2
