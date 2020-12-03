@@ -41,11 +41,6 @@ then
     source ~/.local/bin/bashmarks.sh
 fi
 
-if [ -f ~/.bashrc ]
-then
-    source ~/.bashrc
-fi
-
 # set gopath
 export GOPATH="$HOME/go"
 # disable venv prompt
@@ -62,7 +57,3 @@ source ~/.bash_completion
 # Run neofetch
 neofetch
 
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/trutre/.sdkman"
-[[ -s "/Users/trutre/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/trutre/.sdkman/bin/sdkman-init.sh"
