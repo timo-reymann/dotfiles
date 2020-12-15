@@ -13,7 +13,7 @@
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
 	<key>Command</key>
-	<string>/bin/bash</string>
+	<string></string>
 	<key>Default Bookmark Guid</key>
 	<string>3C5453A1-4F47-40AF-A114-37D7D4DE3A0E</string>
 	<key>DimBackgroundWindows</key>
@@ -76,7 +76,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-2379 119 2095 1047 -2560 0 2560 1417 </string>
+	<string>860 253 1161 951 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>343 181 665 387 0 0 2560 1417 </string>
 	<key>New Bookmarks</key>
@@ -746,7 +746,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>4F29568B-9581-4CDA-886D-E6601592E690</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>31</integer>
+	<integer>52</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>

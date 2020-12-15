@@ -1,0 +1,17 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: $(basename $0) resource module_name"
+    exit 2
+}
+
+if [[ -z "$1" ]] || [[ -z "$2" ]]
+then
+    usage
+fi
+
+cmd="terraform state mv "${1}" "module.${2}.${1}""
+
+echo $cmd
+$cmd
+
