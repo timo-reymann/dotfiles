@@ -33,6 +33,7 @@ alias find-bigboi="sudo du -cks * | sort -rn | head"
 alias grep="grep --color=auto"
 alias venv="python3 -m venv .venv"
 alias venv-activate="source ./.venv/bin/activate"
+alias webp-convert="docker run -v \$PWD:/workspace --rm -it timoreymann/webp-utils cwebp --config /etc/webp-utils/default_configuration.json --file-glob "
 alias webp-convert="docker run -v \$PWD:/workspace --rm -it timoreymann/webp-utils cwebp --config /etc/webp-utils/default.json --file-glob "
 alias awsume=". awsume"
 
