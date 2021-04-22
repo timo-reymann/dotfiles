@@ -15,4 +15,5 @@
 .local/share/ulauncher/extensions/com.github.pywkm.ulauncher-spotify/__pycache__
 .local/share/fonts/.uuid
 .config/autostart/QNAPQsyncClient.desktop
+.idea/
 

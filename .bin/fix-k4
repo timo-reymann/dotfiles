@@ -1,0 +1,3 @@
+#!/bin/bash
+echo 'SUBSYSTEMS=="input", RUN+="echo 0 | tee /sys/module/hid_apple/parameters/fnmode' | sudo tee /etc/udev/rules.d/80-keychron.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
