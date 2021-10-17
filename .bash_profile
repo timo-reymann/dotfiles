@@ -56,7 +56,11 @@ export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;
 export EDITOR=vim
 
 source ~/.bash_completion
-source ~/.bashrc > /dev/null || true
+
+if [[ "$OSTYPE" == "darwin"* ]]
+then
+    source ~/.bashrc > /dev/null || true
+fi
 
 # Run neofetch
 neofetch
