@@ -49,4 +49,4 @@
     insteadOf = "https://gitlab.com/"
 
 [init]
-    defaultBrach = main
+    defaultBranch = main
