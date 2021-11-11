@@ -5,17 +5,17 @@
 {% endif %}
 
 [user]
-	name = Timo Reymann
+    name = Timo Reymann
 {% if yadm.class == "work" %}
-	signingkey = 5ECE9ABC
-	email = Timo.Reymann@trustedshops.de
+    signingkey = 5ECE9ABC
+    email = Timo.Reymann@trustedshops.de
 {% else %}
-	email = mail@timo-reymann.de
-	signingkey = 841A0138
+    email = mail@timo-reymann.de
+    signingkey = 841A0138
 {% endif %}
 
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 [core]
     autocrlf = input
@@ -31,16 +31,17 @@
     default = current
 
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
 
 [github]
-	username = timo-reymann
+    username = timo-reymann
 
 [alias]
-	release = semver-git-tag
+    release = semver-git-tag
+    squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
@@ -50,3 +51,4 @@
 
 [init]
     defaultBranch = main
+
