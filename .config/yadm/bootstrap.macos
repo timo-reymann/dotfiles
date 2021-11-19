@@ -80,7 +80,6 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.iterm2"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 line_br
 
-
 output_step "Copy fonts over"
 sudo cp .fonts/* /Library/Fonts/
 line_br
