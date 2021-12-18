@@ -2,7 +2,7 @@
   hosts: localhost
   vars:
     qsync_version: "1.0.4.1302"
-    keeweb_version: "1.13.2"
+    keeweb_version: "1.18.7"
   roles:
     - role: ubuntu_ppa
       param_name: git-core/ppa
@@ -31,11 +31,11 @@
         - common
         - libsecret
 
-    - role: vim_customization
-      tags:
-        - vim
-        - common
-        - editor
+          #- role: vim_customization
+          #tags:
+          #- vim
+          #- common
+          #- editor
 
     - role: bashmarks
       tags:
@@ -74,4 +74,4 @@
         - common
         - packages
         - anydesk
-      param_version: "5.5.4-1"
+      param_version: "6.1.1-1"
