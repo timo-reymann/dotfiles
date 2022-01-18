@@ -42,6 +42,13 @@
         - dev
         - python
 
+    - role: package_install
+      param_packages:
+        - httpie
+      tags:
+        - dev
+        - util
+
     - role: php
       param_version: "{{ php_version }}"
       tags:
