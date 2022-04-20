@@ -17,6 +17,30 @@ __virtualenv_info() {
     fi
 }
 
+__secrets_loaded() {
+    if [[ -n "$LOADED_SECRETS" ]]
+    then
+        echo " 🔑${LOADED_SECRETS}"
+    else
+        echo ""
+    fi
+}
+
+__load_secret() {
+    if [[ ! -f "${HOME}/.secrets/${1}.env" ]]
+    then
+        echo "Secret not found"
+        return
+    fi
+
+    . _load-env-file "${HOME}/.secrets/${1}.env"
+
+    if  ! echo $LOADED_SECRETS | grep -w -q $1
+    then
+        export LOADED_SECRETS="$LOADED_SECRETS $1"
+    fi
+}
+
 # Alias definition
 alias ll="ls -lisah"
 alias update="sudo apt update && sudo apt upgrade -y"
@@ -37,6 +61,7 @@ alias webp-convert="docker run -v \$PWD:/workspace --rm -it timoreymann/webp-uti
 alias webp-convert="docker run -v \$PWD:/workspace --rm -it timoreymann/webp-utils cwebp --config /etc/webp-utils/default.json --file-glob "
 alias awsume=". awsume"
 alias load-env-file=". _load-env-file"
+alias load-secret="__load_secret"
 
 # shell bookmarks
 if [ -f ~/.local/bin/bashmarks.sh ]
@@ -51,7 +76,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Add bin
 export PATH="$PATH:$HOME/.bin:/usr/local/go/bin:$GOPATH/bin"
 # Customize bash colors
-export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;96m\]\[\e[1m\]$(__git_branch)\[\e[33m\]$(__virtualenv_info)\[\033[00m\]  ⏰ $(date "+%H:%M:%S") \[\033[00m\]\n$ '
+export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;96m\]\[\e[1m\]$(__git_branch)\[\e[33m\]$(__virtualenv_info)\[\033[00m\] \[\033[00m\] ⏰ $(date "+%H:%M:%S") \[\033[93m\]$(__secrets_loaded)\[\033[00;94m\]\[\e[1m\]\[\033[00m\]\n$ '
 # Environment variables
 export EDITOR=vim
 

@@ -3,4 +3,5 @@
 .Zoiper5/*.bk
 .ssh/id_rsa*
 .ssh/timo.reymann.trustedshops.de*
+.secrets/*.env
 
