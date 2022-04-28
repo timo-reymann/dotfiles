@@ -20,7 +20,7 @@ __virtualenv_info() {
 __secrets_loaded() {
     if [[ -n "$LOADED_SECRETS" ]]
     then
-        echo " 🔑${LOADED_SECRETS}"
+        echo "  🔑${LOADED_SECRETS}"
     else
         echo ""
     fi
@@ -38,6 +38,15 @@ __load_secret() {
     if  ! echo $LOADED_SECRETS | grep -w -q $1
     then
         export LOADED_SECRETS="$LOADED_SECRETS $1"
+    fi
+}
+
+__awsume_active_profile() {
+    if [[ -n "$AWSUME_PROFILE" ]]
+    then
+        echo "  ☁️  ${AWSUME_PROFILE}"
+    else
+        echo ""
     fi
 }
 
@@ -76,7 +85,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Add bin
 export PATH="$PATH:$HOME/.bin:/usr/local/go/bin:$GOPATH/bin"
 # Customize bash colors
-export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w\[\033[00;96m\]\[\e[1m\]$(__git_branch)\[\e[33m\]$(__virtualenv_info)\[\033[00m\] \[\033[00m\] ⏰ $(date "+%H:%M:%S") \[\033[93m\]$(__secrets_loaded)\[\033[00;94m\]\[\e[1m\]\[\033[00m\]\n$ '
+export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[92m\]  📂 \w \[\033[00m\] ⏰ $(date "+%H:%M:%S")\[\033[00m\]\[\e[33m\]\[\033[00;92m\]\[\e[1m\]$(__git_branch)\[\033[96m\]$(__virtualenv_info)\[\033[93m\]$(__secrets_loaded)\[\033[00;34m\]\[\e[1m\]$(__awsume_active_profile)\[\033[00m\]\n$ '
 # Environment variables
 export EDITOR=vim
 
