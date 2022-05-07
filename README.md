@@ -1,7 +1,13 @@
 dotfiles
 ===
 
-Welcome to my home directory (or at least the important gears).
+<p align="center">
+	<img width="300" src=".github/logo.png">
+</p>
+
+<p align="center">
+	Welcome to my home directory (or at least the important gears).
+</p>
 
 # Whats in the box?
 
