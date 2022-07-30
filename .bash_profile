@@ -102,3 +102,7 @@ then
     neofetch
 fi
 
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/timo/.local/share/JetBrains/Toolbox/scripts"
