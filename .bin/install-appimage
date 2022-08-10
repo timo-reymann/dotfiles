@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+	echo "❌ Path to AppImage missing"
+	exit 2
+fi
+
+if [ -z "$2" ]
+then
+	echo "❌ Target name missing"
+fi
+
+app_image="$1"
+target_name="$2"
+escaped_target_name=$(echo "$target_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+group=$(id -g)
+install_path="/opt/$escaped_target_name"
+install_app_path="$install_path/$(basename $app_image)"
+install_desktop_path="$install_path/launch.desktop"
+icon_path="$HOME/.icons/${escaped_target_name}.png"
+
+echo "Creating installation directory $install_path ..."
+sudo mkdir -p "$install_path"
+sudo chown "$group" "$install_path"
+
+echo "Copy AppImage to $install_app_path ..."
+sudo cp "$app_image" "$install_app_path"
+# sudo chown "$group" "$install_app_path"
+chmod +x "$install_app_path"
+
+cat << EOF > "$install_desktop_path"
+[Desktop Entry]
+Encoding=UTF-8
+Name=${target_name}
+Exec=${install_app_path} %u
+Terminal=false
+Type=Application
+Icon=${icon_path}
+EOF
+
+sudo ln -sf "$install_desktop_path"  "/usr/share/applications/${target_name}.desktop"
+echo "Place your icon in $icon_path"
