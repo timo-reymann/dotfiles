@@ -26,7 +26,7 @@ sudo chown "$group" "$install_path"
 
 echo "Copy AppImage to $install_app_path ..."
 sudo cp "$app_image" "$install_app_path"
-# sudo chown "$group" "$install_app_path"
+sudo chown "$group" "$install_app_path"
 chmod +x "$install_app_path"
 
 cat << EOF > "$install_desktop_path"
