@@ -42,6 +42,7 @@
 [alias]
     release = semver-git-tag
     squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
+    sync = "!f() { git pull --rebase && git push; };f"
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
