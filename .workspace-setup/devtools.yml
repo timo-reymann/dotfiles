@@ -90,3 +90,9 @@
         - util
         - dev
         - snap
+
+    - role: gh-cli
+      tags:
+        - util
+        - dev
+        - gh-cli

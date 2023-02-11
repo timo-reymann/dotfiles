@@ -75,6 +75,10 @@ brew install macvim
 curl -L https://bit.ly/janus-bootstrap | bash
 line_br
 
+output_step "Install common cli tools"
+brew install gh
+line_br
+
 output_step "Setup bashmarks"
 cd /tmp
 git clone https://github.com/huyng/bashmarks.git
