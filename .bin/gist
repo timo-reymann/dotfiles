@@ -1,0 +1,43 @@
+#!/bin/bash
+set +x
+UUID=$(cat /proc/sys/kernel/random/uuid)
+
+# check if first parameter is there
+if [ -z "$1" ]; then
+    echo "Usage: $0 <file-path|extension>"
+    exit 2
+fi
+
+# create buffer with editor or use existing file
+if [ -f "$1" ]; then
+    file="$1"
+    extension="${file##*.}"
+    if [[ "$extension" == "$file" ]]; then
+        extension=""
+    else
+        extension=".${extension}"
+    fi
+    delete_source=0
+else
+    file="/tmp/${UUID}.${1}"
+    extension=".$1"
+    delete_source=1
+    $EDITOR "$file"
+    echo -e "\u001b[32m✓\u001b[0m Created file with language $1"
+fi
+
+if [ ! -f "$file" ]
+then
+    echo -e "\u001b[31mX\u001b[0m Aborted gist creation"
+    exit 0
+fi
+
+# get file extension and create random name for paste
+cat "$file" | gh gist create -w -f "${UUID}${extension}"
+
+if [[ "$delete_source" -eq "1" ]]; then
+    rm "$file"
+    echo -e "\u001b[32m✓\u001b[0m Deleted temporary file for gist"
+fi
+
+wait
