@@ -25,7 +25,7 @@ _decrement_selected() {
     if [ "${selected}" -lt 0 ]; then
         selected=$(($2 - 1))
     fi
-    echo $selected
+    echo -n $selected
 }
 _increment_selected() {
     local selected=$1
@@ -33,7 +33,7 @@ _increment_selected() {
     if [ "${selected}" -ge "${opts_count}" ]; then
         selected=0
     fi
-    echo $selected
+    echo -n $selected
 }
 _contains() {
     items=$1
@@ -47,7 +47,7 @@ input() {
     _prompt_text "$1"
                        echo -en "\e[36m\c" >&2
     read -r text
-    echo "${text}"
+    echo -n "${text}"
 }
 confirm() {
     _prompt_text "$1 (y/N)"
@@ -60,16 +60,17 @@ confirm() {
     done
     echo -en "\e[0m" >&2
     case $result in
-        y) echo 1  ;;
-        N) echo 0 ;;
+        y) echo -n 1  ;;
+        N) echo -n 0 ;;
     esac
     echo "" >&2
 }
 list() {
     _prompt_text "$1 "
+    echo "" >&2
     local opts=("${@:2}")
     local opts_count=$(($# - 1))
-    _new_line_foreach_item "${opts[*]}"
+    _new_line_foreach_item "${opts[@]}"
     local lastrow
                    lastrow=$(_get_cursor_row)
     local startrow
@@ -94,17 +95,19 @@ list() {
             down) selected=$(_increment_selected "${selected}" "${opts_count}")  ;;
         esac
     done
+    echo -en "\n" >&2
     _cursor_to "${lastrow}"
     _cursor_blink_on
-    echo "${selected}"
+    echo -n "${selected}"
 }
 checkbox() {
     _prompt_text "$1"
+    echo "" >&2
     local opts
                 opts=("${@:2}")
     local opts_count
                       opts_count=$(($# - 1))
-    _new_line_foreach_item "${opts[*]}"
+    _new_line_foreach_item "${opts[@]}"
     local lastrow
                    lastrow=$(_get_cursor_row)
     local startrow
@@ -145,7 +148,7 @@ checkbox() {
     done
     _cursor_to "${lastrow}"
     _cursor_blink_on
-    IFS=" " echo "${checked[@]}"
+    IFS=" " echo -n "${checked[@]}"
 }
 password() {
     _prompt_text "$1"
@@ -168,7 +171,7 @@ password() {
         fi
     done
     echo -en "\e[0m" >&2
-    echo "${password}"
+    echo -n "${password}"
 }
 editor() {
     tmpfile=$(mktemp)
@@ -210,13 +213,15 @@ LOG_INFO=1
 LOG_DEBUG=0
 parse_log_level() {
     local level="$1"
+    local parsed
     case "${level}" in
-      info | INFO)   echo $LOG_INFO  ;;
-      debug | DEBUG) echo $LOG_DEBUG  ;;
-      warn | WARN)   echo $LOG_WARN  ;;
-      error | ERROR) echo $LOG_ERROR  ;;
-      *)             echo -1  ;;
+      info | INFO)   parsed=$LOG_INFO  ;;
+      debug | DEBUG) parsed=$LOG_DEBUG  ;;
+      warn | WARN)   parsed=$LOG_WARN  ;;
+      error | ERROR) parsed=$LOG_ERROR  ;;
+      *)             parsed=-1  ;;
     esac
+    export LOG_LEVEL="${parsed}"
 }
 log() {
     local level="$1"
