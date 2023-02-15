@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.local/share/bash-tui-toolkit/bundle.bash
 DEFAULT_ENV_FILE=".env"
 ENV_FILE=$1
 
@@ -9,8 +10,8 @@ fi
 
 if [ ! -f "$ENV_FILE" ]
 then
-    echo "File does not exist" >&2
+    show_error "File does not exist" >&2
+else
+    export $(cat $ENV_FILE | sed 's/#.*//g' | xargs)
+    show_success "Env file loaded"
 fi
-
-export $(cat $ENV_FILE | sed 's/#.*//g' | xargs)
-

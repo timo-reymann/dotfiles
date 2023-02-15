@@ -1,14 +1,16 @@
 #!/bin/bash
-
+source ~/.local/share/bash-tui-toolkit/bundle.bash
+set -e
 if [ -z "$1" ]
 then
-	echo "❌ Path to AppImage missing"
+	show_error "Path to AppImage missing"
 	exit 2
 fi
 
 if [ -z "$2" ]
 then
-	echo "❌ Target name missing"
+	show_error "Target name missing"
+	exit 2
 fi
 
 app_image="$1"
@@ -40,4 +42,4 @@ Icon=${icon_path}
 EOF
 
 sudo ln -sf "$install_desktop_path"  "/usr/share/applications/${target_name}.desktop"
-echo "Place your icon in $icon_path"
+show_success "Place your icon in $icon_path"

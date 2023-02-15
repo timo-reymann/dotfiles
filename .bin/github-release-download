@@ -2,10 +2,10 @@
 #
 # Helper script to download latest release artifact for github repo
 #
-
+source ~/.local/share/bash-tui-toolkit/bundle.bash
 if [ -z "$1" ] || [ -z "$2" ]
 then
-    echo "❌ Usage: <username/repo> <artifcatPart to grep>";
+    show_error "Usage: <username/repo> <artifcatPart to grep>";
     exit 1
 fi
 
@@ -19,7 +19,7 @@ wget --quiet -O "$2" -q $download_link
 
 if [ -f "$2" ]
 then
-    echo "✔️ Downloaded relase to ${PWD}${2}"
+    show_success "Downloaded relase to ${PWD}/${2}"
 else
-    echo "❌ Failed to download release"
+    show_error "Failed to download release"
 fi
