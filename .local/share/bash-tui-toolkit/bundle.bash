@@ -51,7 +51,7 @@ _increment_selected() {
 }
 input() {
     _prompt_text "$1"
-                       echo -en "\e[36m\c" >&2
+                       echo -en "\033[36m\c" >&2
     read -r text
     echo -n "${text}"
 }
