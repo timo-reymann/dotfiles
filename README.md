@@ -15,7 +15,7 @@ dotfiles
 - my cinnamon de configuration
 - bash stuff
 
-# Requirements
+## Requirements
 - [yadm](https://yadm.io/)
 
 ## Installation
