@@ -1,38 +1,33 @@
 dotfiles
 ===
+[![LICENSE](https://img.shields.io/github/license/timo-reymann/dotfiles)](https://github.com/timo-reymann/dotfiles/blob/main/LICENSE)
 
 <p align="center">
 	<img width="300" src=".github/logo.png">
-</p>
-
-<p align="center">
+    <br />
 	Welcome to my home directory (or at least the important gears).
 </p>
 
-# Whats in the box?
-
-## Config!
-Config for stuff i would like to share on every machine i am using!
-
-## Home-Directory-Stuff
+## Features
+- configurations for toolings
 - custom helper scripts
 - custom fonts
 - my cinnamon de configuration
 - bash stuff
 
-# How to get started
-These dotfiles make use of [yadm](https://yadm.io/) to handle all kinds
-of stuff.
+# Requirements
+- [yadm](https://yadm.io/)
 
-## Basic
+## Installation
+### Basic
 Before initializing yadm stuff, you need to do different stuff,
 depending on the platform.
 
-### Ubuntu
+#### Ubuntu
 - Install yadm: ``sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm``
 - Let the bootstrap install the required stuff
 
-### MacOS
+#### MacOS
 - Install brew
 - Install git using brew: `brew install git`
 - Install yadm using brew: `brew install yadm`
@@ -43,13 +38,13 @@ depending on the platform.
 Keyboard > Input Sources`
 - Download and install [VEER](http://veeer.io) to make macos window manager usable
 
-## Advanced (Ubuntu only)
+### Advanced (Ubuntu only)
 Advanced package configuration and so on can be configured using ansible.
 
 For every class there is a playbook including the basic operations. If
 anything special is required, just execute the playbooks seperately.
 
-### Classes
+#### Classes
 The following classes are planned/active:
 
 - *work*: Work related config (also applys dev config)
@@ -59,4 +54,11 @@ The following classes are planned/active:
 
 The bootstrap file executes the ansible playbooks according to the
 class, the convention is `class_<classname>.yml`.
+
+## Motivation
+Cause thats what the cool kids do!
+
+## Contributing
+There is no real thing to contribute, if you find something strange or
+have a question feel free to open a discussion or file an issue :)
 
