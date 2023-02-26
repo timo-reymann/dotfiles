@@ -96,13 +96,4 @@ then
     source ~/.bashrc > /dev/null || true
 fi
 
-if tty -s;
-then
-    # Run neofetch
-    neofetch
-fi
-
-
-
-# Added by Toolbox App
-export PATH="$PATH:/home/timo/.local/share/JetBrains/Toolbox/scripts"
+tty -s  && [[ $SHLVL -lt 2 ]] && neofetch
