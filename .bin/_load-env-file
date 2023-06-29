@@ -12,6 +12,6 @@ if [ ! -f "$ENV_FILE" ]
 then
     show_error "File does not exist" >&2
 else
-    export $(cat $ENV_FILE | sed 's/#.*//g' | xargs)
+    export $(cat "$ENV_FILE" | sed 's/#.*//g' | xargs)
     show_success "Env file loaded"
 fi
