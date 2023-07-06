@@ -51,12 +51,14 @@ __awsume_active_profile() {
 }
 
 __awsume_with_retry() {
-    . awsume "$@"
+    output="$(. awsume "$@" 2>&1)"
     if [[ $? -gt 0 ]] && [[ ! -z "$1" ]]; then
-        echo " * Awsume called and profile specified, running initial login"
-        aws-sso-util login --profile "$1"
-        echo " * Running awsume again"
-        awsume "$@"
+        echo -e "\033[1;33m * Awsume call failed and profile specified, running initial login\033[0m"
+        aws-sso-util login --profile "$1" > /dev/null 2>&1
+        echo -e "\033[0;32m * Running awsume again\033[0m"
+        . awsume "$@"
+    else
+        echo -en "\033\033[0;32m$output\033[0m"
     fi
 }
 
