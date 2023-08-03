@@ -61,7 +61,7 @@ else
     fi
 fi
 
-output_setup "Setup repos"
+output_step "Setup repos"
 git clone https://github.com/timo-reymann/ssh-knock-interceptor.git $HOME/.ssh-knock-interceptor || true
 line_br
 

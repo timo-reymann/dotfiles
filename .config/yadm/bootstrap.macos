@@ -7,8 +7,6 @@ echo "disable 'natural' scrolling"
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
 echo "disable dialogs and useless warnings"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-echo "fix scrolling"
-brew cask install scroll-reverser
 echo "always show scroll bars"
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 echo "disable iCloud default save location"
@@ -59,7 +57,6 @@ line_br
 
 output_step "Install additional software using brew"
 brew install neofetch
-brew cask install iterm2
 line_br
 
 output_step "Install keyboard layouts"
@@ -81,7 +78,7 @@ line_br
 
 output_step "Setup bashmarks"
 cd /tmp
-git clone https://github.com/huyng/bashmarks.git
+git clone https://github.com/huyng/bashmarks.git || true
 cd bashmarks
 make install
 line_br
@@ -92,6 +89,6 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 line_br
 
 output_step "Copy fonts over"
-sudo cp .fonts/* /Library/Fonts/
+sudo cp ~/.fonts/* /Library/Fonts/
 line_br
 
