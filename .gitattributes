@@ -1,2 +1,5 @@
 # Automatically normalize line endings
 * text=auto
+
+*.tgz diff=tgz
+*.tar.gz diff=tgz

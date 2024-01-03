@@ -21,6 +21,11 @@
     autocrlf = input
     editor = vim
     excludesfile = ~/.global-gitignore
+    attributesFile = ~/.gitattributes
+
+[diff "tgz"]
+    binary = true
+    textconv = tar -xvzO -f
 
 {% if yadm.class == "work" %}
 [protocol]
