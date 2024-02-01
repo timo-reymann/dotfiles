@@ -1,0 +1,49 @@
+ruleSets:
+  - name: Weekend
+    rules:
+      - ruleName: week-day
+        daysOfWeekToRun:
+          - Saturday
+          - Sunday
+      - ruleName: time
+        startRange: 00:00
+        endRange: 19:00
+  - name: Always
+    rules:
+      - ruleName: always
+  - name: Workday
+    rules:
+      - ruleName: week-day
+        daysOfWeekToRun:
+          - Monday
+          - Tuesday
+          - Wednesday
+          - Thursday
+          - Friday
+      - ruleName: time
+        startRange: 07:30
+        endRange: 17:30
+targets:
+  - targetType: appFile
+    path: /Applications/Slack.app
+    name: Slack
+  - targetType: appFile
+    path: /Applications/Viscosity.app
+    name: Viscosity VPN
+  - targetType: appFile
+    path: /Applications/Thunderbird.app
+    name: Thunderbird
+  - targetType: appFile
+    path: /Applications/Vorta.app
+    name: Vorta Backup
+entries:
+  - ruleSetName: Workday
+    targetName: Slack
+  - ruleSetName: Workday
+    targetName: Viscosity VPN
+  - ruleSetName: Workday
+    targetName: Thunderbird
+  - ruleSetName: Workday
+    targetName: Vorta Backup
+  - ruleSetName: Always
+    targetName: Thunderbird
