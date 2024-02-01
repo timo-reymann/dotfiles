@@ -1,0 +1,53 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: $0  [-l/-m] <job url>"
+    echo ""
+    echo "Options:"
+    echo "-l less"
+    echo "-n more"
+    echo "Required environment variables:"
+    echo "- GITLAB_TOKEN - access token with api scope"
+}
+
+while getopts :ml: opt
+do
+   case $opt in
+       m)
+           process_pipe="more -r"
+           shift
+           ;;
+       l)
+           process_pipe="less -r"
+           shift
+           ;;
+   esac
+done
+
+if [ -z "$1" ];
+then
+    usage
+    exit 2
+fi
+
+if [ -z "$GITLAB_TOKEN" ]
+then
+    usage
+    exit 2
+fi
+
+url=$1
+base_url=$(echo $url | cut -d/ -f-3)
+job_id=$(echo "$url"| awk -F/ '{ print $NF }')
+project_name=$(echo $url | awk -F'-/jobs' '{print $1}' | cut -d/ -f4- | sed 's/.$//')
+encoded_project_name=$(echo "$project_name" | sed 's/\//%2f/g')
+
+output=$(curl -Ls "${base_url}/api/v4/projects/${encoded_project_name}/jobs/${job_id}/trace?access_token=${GITLAB_TOKEN}")
+
+if [ ! -z "$process_pipe" ]
+then
+    echo "$output" | $process_pipe
+else
+    echo "$output"
+fi
+
