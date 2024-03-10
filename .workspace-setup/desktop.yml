@@ -35,4 +35,8 @@
       tags:
         - packages
         - desktop
+    - role: unilaunch
+      tags:
+        - packages
+        - desktop
 
