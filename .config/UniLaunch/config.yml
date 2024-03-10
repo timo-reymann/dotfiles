@@ -1,0 +1,38 @@
+ruleSets:
+- name: Workday evening
+  rules:
+  - startRange: 20:00
+    endRange: 12:00
+    ruleName: time
+  - daysOfWeekToRun:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    ruleName: week-day
+- name: Weekend
+  rules:
+  - daysOfWeekToRun:
+    - Saturday
+    - Sunday
+    ruleName: week-day
+- name: Always
+  rules:
+  - ruleName: always
+targets:
+- executable: /snap/bin/discord
+  arguments: 
+  targetType: executable
+  name: Discord
+- executable: /snap/bin/spotify
+  arguments: 
+  targetType: executable
+  name: Spotify
+entries:
+- ruleSetName: Workday evening
+  targetName: Discord
+- ruleSetName: Weekend
+  targetName: Discord
+- ruleSetName: Always
+  targetName: Spotify
