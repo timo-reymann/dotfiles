@@ -55,6 +55,9 @@
 [url "git@gitlab.com:"]
     insteadOf = "https://gitlab.com/"
 
+[url "ssh://git@git-ssh.deepl.dev/"]
+    insteadOf = https://git.deepl.dev/
+
 [init]
     defaultBranch = main
 
