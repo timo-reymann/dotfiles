@@ -60,6 +60,30 @@ __awsume_with_retry() {
     fi
 }
 
+__log_bash_persistent_history()
+{
+  [[
+    $(history 1) =~ ^\ *[0-9]+\ +([^\ ]+\ [^\ ]+)\ +(.*)$
+  ]]
+  local date_part="${BASH_REMATCH[1]}"
+  local command_part="${BASH_REMATCH[2]}"
+  if [ "$command_part" != "$PERSISTENT_HISTORY_LAST" ]
+  then
+    echo $date_part "|" "$command_part" >> ~/.persistent_history
+    export PERSISTENT_HISTORY_LAST="$command_part"
+  fi
+}
+
+# Stuff to do on PROMPT_COMMAND
+run_on_prompt_command()
+{
+    __log_bash_persistent_history
+    history -a
+    history -c
+    history -r
+}
+
+
 # Alias definition
 alias ll="ls -lisah"
 alias update="sudo apt update && sudo apt upgrade -y"
@@ -71,7 +95,6 @@ alias gpull-all="find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev |
 alias suvi="sudo vim"
 alias pls="sudo \$(fc -n -l -1 -1)"
 alias flush-dns="sudo systemd-resolve --flush-caches"
-alias pdoc="docker ps | peco | awk '{print \$1;}' | tr '\n' ' ' | xargs docker"
 alias find-bigboi="sudo du -cks * | sort -rn | head"
 alias grep="grep --color=auto"
 alias venv="python3 -m venv .venv"
@@ -99,6 +122,11 @@ export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[36m\]  📂 \w \[\033[00
 # Environment variables
 export EDITOR=vim
 
+# customize history behaviour
+export PROMPT_COMMAND="run_on_prompt_command"
+export HISTTIMEFORMAT="%F %T  "
+shopt -s histappend
+
 source ~/.bash_completion
 
 if [[ "$OSTYPE" == "darwin"* ]]
@@ -113,3 +141,4 @@ export PATH="$PATH:/home/timo/.local/share/JetBrains/Toolbox/scripts"
 export PATH="$PATH:/usr/local/bin"
 
 tty -s  && [[ $SHLVL -lt 2 ]] && neofetch
+
