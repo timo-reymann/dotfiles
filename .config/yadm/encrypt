@@ -5,4 +5,4 @@
 .ssh/timo.reymann.trustedshops.de*
 .ssh/id_ed25519_deepl*
 .secrets/*.env
-
+.netrc
