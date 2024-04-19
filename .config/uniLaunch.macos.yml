@@ -1,3 +1,6 @@
+connectivityCheck:
+  endpoint: https://connectivity-check.timo-reymann.de
+  timeout: 00:3
 ruleSets:
   - name: Weekend
     rules:
