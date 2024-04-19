@@ -33,6 +33,7 @@ targets:
   - targetType: appFile
     path: /Applications/Thunderbird.app
     name: Thunderbird
+    waitForNetworkConnectivity: true
   - targetType: appFile
     path: /Applications/Vorta.app
     name: Vorta Backup
