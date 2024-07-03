@@ -1,53 +1,62 @@
-connectivityCheck:
-  endpoint: https://connectivity-check.timo-reymann.de
-  timeout: 00:3
 ruleSets:
-  - name: Weekend
-    rules:
-      - ruleName: week-day
-        daysOfWeekToRun:
-          - Saturday
-          - Sunday
-      - ruleName: time
-        startRange: 00:00
-        endRange: 19:00
-  - name: Always
-    rules:
-      - ruleName: always
-  - name: Workday
-    rules:
-      - ruleName: week-day
-        daysOfWeekToRun:
-          - Monday
-          - Tuesday
-          - Wednesday
-          - Thursday
-          - Friday
-      - ruleName: time
-        startRange: 07:30
-        endRange: 17:30
+- name: Weekend
+  rules:
+  - daysOfWeekToRun:
+    - Saturday
+    - Sunday
+    ruleName: week-day
+  - startRange: 00:00
+    endRange: 19:00
+    ruleName: time
+- name: Always
+  rules:
+  - ruleName: always
+- name: Workday
+  rules:
+  - daysOfWeekToRun:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    ruleName: week-day
+  - startRange: 07:30
+    endRange: 17:30
+    ruleName: time
 targets:
-  - targetType: appFile
-    path: /Applications/Slack.app
-    name: Slack
-  - targetType: appFile
-    path: /Applications/Viscosity.app
-    name: Viscosity VPN
-  - targetType: appFile
-    path: /Applications/Thunderbird.app
-    name: Thunderbird
-    waitForNetworkConnectivity: true
-  - targetType: appFile
-    path: /Applications/Vorta.app
-    name: Vorta Backup
+- targetType: appFile
+  path: /Applications/Slack.app
+  name: Slack
+  waitForNetworkConnectivity: false
+- targetType: appFile
+  path: /Applications/Viscosity.app
+  name: Viscosity VPN
+  waitForNetworkConnectivity: false
+- targetType: appFile
+  path: /Applications/Thunderbird.app
+  name: Thunderbird
+  waitForNetworkConnectivity: true
+- targetType: appFile
+  path: /Applications/Vorta.app
+  name: Vorta Backup
+  waitForNetworkConnectivity: false
+- targetType: appFile
+  path: '/Users/phpe/Applications/Chrome Apps.localized/MR Overview.app'
+  name: MR Overview
+  waitForNetworkConnectivity: true
 entries:
-  - ruleSetName: Workday
-    targetName: Slack
-  - ruleSetName: Workday
-    targetName: Viscosity VPN
-  - ruleSetName: Workday
-    targetName: Thunderbird
-  - ruleSetName: Workday
-    targetName: Vorta Backup
-  - ruleSetName: Always
-    targetName: Thunderbird
+- ruleSetName: Workday
+  targetName: Slack
+- ruleSetName: Workday
+  targetName: Viscosity VPN
+- ruleSetName: Workday
+  targetName: Thunderbird
+- ruleSetName: Workday
+  targetName: Vorta Backup
+- ruleSetName: Always
+  targetName: Thunderbird
+- ruleSetName: Workday
+  targetName: MR Overview
+connectivityCheck:
+  endpoint: https://connectivity-check.timo-reymann.de/
+  timeout: 00:00:30
