@@ -33,9 +33,11 @@ targets:
   name: Viscosity VPN
   waitForNetworkConnectivity: false
 - targetType: appFile
-  path: /Applications/Thunderbird.app
-  name: Thunderbird
-  waitForNetworkConnectivity: true
+  path: /Applications/Mail.app
+  name: Mail
+- targetType: appFile
+  path: /Applications/Calendar.app
+  name: Calendar
 - targetType: appFile
   path: /Applications/Vorta.app
   name: Vorta Backup
@@ -54,7 +56,9 @@ entries:
 - ruleSetName: Workday
   targetName: Vorta Backup
 - ruleSetName: Always
-  targetName: Thunderbird
+  targetName: Mail
+- ruleSetName: Workday
+  targetName: Calendar
 - ruleSetName: Workday
   targetName: MR Overview
 connectivityCheck:
