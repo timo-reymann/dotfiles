@@ -52,8 +52,6 @@ entries:
 - ruleSetName: Workday
   targetName: Viscosity VPN
 - ruleSetName: Workday
-  targetName: Thunderbird
-- ruleSetName: Workday
   targetName: Vorta Backup
 - ruleSetName: Always
   targetName: Mail
