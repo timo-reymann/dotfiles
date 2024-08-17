@@ -1,9 +1,0 @@
-- name: Ensure packages are installed
-  apt:
-    state: present
-    name: "{{ item }}"
-  loop: "{{ param_packages }}"
-  loop_control:
-    label: "Ensure package {{ item  }} is installed"
-  become: true
-

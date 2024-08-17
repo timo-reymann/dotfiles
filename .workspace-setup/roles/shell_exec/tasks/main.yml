@@ -1,7 +1,0 @@
-- name: "Execute shell command '{{ param_cmd  }}'"
-  shell: "{{ param_cmd }}"
-  register: out
-
-- debug:
-    msg: "{{ out.stdout_lines }}"
-

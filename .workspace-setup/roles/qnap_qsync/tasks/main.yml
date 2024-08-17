@@ -1,6 +1,0 @@
-- include_role:
-    name: remote_deb_install
-  vars:
-    param_name: QNAPQSyncClient
-    param_url: "https://download.qnap.com/Storage/Utility/QNAPQsyncClientUbuntux64-{{ param_version }}.deb"
-

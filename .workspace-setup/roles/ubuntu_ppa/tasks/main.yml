@@ -1,6 +1,0 @@
-- name: "Add ppa repository ppa:{{ param_name  }}"
-  apt_repository:
-    repo: "ppa:{{ param_name }}"
-    state: present
-  become: true
-
