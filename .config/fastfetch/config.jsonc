@@ -1,0 +1,84 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "size": {
+      "maxPrefix": "MB",
+      "ndigits": 0
+    },
+    "key": {
+      "type": "string"
+    },
+    "color": {
+      "keys": "red",
+      "output": "white"
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "{#yellow}System Info"
+    },
+    "kernel",
+    "uptime",
+    "memory",
+    "disk",
+    "gpu",
+    "cpu",
+    "break",
+    {
+      "type": "custom",
+      "format": "{#yellow}Environment"
+    },
+    "terminal",
+    {
+      "key": "Ansible",
+      "type": "command",
+      "text": "ansible --version | grep -o -P -e   \"core ([0-9]*\\.[0-9]*\\.[0-9]*)\" -o  | cut -d' ' -f2"
+    },
+    {
+      "key": "Git",
+      "type": "command",
+      "text": "git --version | grep -o -P -e   \"version ([0-9]*\\\\.[0-9]*\\\\.[0-9]*)\" -o  | cut -d' ' -f2"
+    },
+    {
+      "key": "Go",
+      "type": "command",
+      "text": "go version | grep -o -P -e   \"go([0-9]*\\\\.[0-9]*\\\\.[0-9]*)\" -o | cut -c 3-",
+      "keyIcon": ""
+    },
+    "shell",
+    {
+      "key": "Pyton",
+      "type": "command",
+      "text": "python --version | cut -d' ' -f2"
+    },
+    {
+      "key": "Node",
+      "type": "command",
+      "text": "node --version"
+    },
+    {
+      "key": "Docker Client",
+      "type": "command",
+      "text": "docker version --format '{{.Client.Version}}'"
+    },
+    {
+      "key": "Docker Server",
+      "type": "command",
+      "text": "docker version --format '{{.Server.Version}}'"
+    },
+    {
+      "key": "Terraform",
+      "type": "command",
+      "text": "terraform --version | head -n1 | cut -d' ' -f2"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#yellow}Networking"
+    },
+    "localip",
+    "publicip"
+  ]
+}
