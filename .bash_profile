@@ -140,5 +140,5 @@ export PATH="$PATH:/home/timo/.local/share/JetBrains/Toolbox/scripts"
 # Added by Toolbox App
 export PATH="$PATH:/usr/local/bin"
 
-tty -s  && [[ $SHLVL -lt 2 ]] && neofetch
+tty -s  && [[ $SHLVL -lt 2 ]] && fastfetch
 
