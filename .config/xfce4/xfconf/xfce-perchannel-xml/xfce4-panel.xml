@@ -20,6 +20,7 @@
         <value type="int" value="10"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
+      <property name="output-name" type="string" value="Primary"/>
     </property>
     <property name="dark-mode" type="bool" value="true"/>
   </property>
