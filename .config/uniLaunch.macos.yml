@@ -35,16 +35,22 @@ targets:
 - targetType: appFile
   path: /Applications/Mail.app
   name: Mail
+  waitForNetworkConnectivity: false
 - targetType: appFile
   path: /Applications/Calendar.app
   name: Calendar
+  waitForNetworkConnectivity: false
 - targetType: appFile
   path: /Applications/Vorta.app
   name: Vorta Backup
   waitForNetworkConnectivity: false
 - targetType: appFile
-  path: '/Users/phpe/Applications/Chrome Apps.localized/MR Overview.app'
+  path: /Users/phpe/Applications/Chrome Apps.localized/MR Overview.app
   name: MR Overview
+  waitForNetworkConnectivity: true
+- targetType: appFile
+  path: /Applications/zoom.us.app
+  name: Zoom
   waitForNetworkConnectivity: true
 entries:
 - ruleSetName: Workday
@@ -59,6 +65,8 @@ entries:
   targetName: Calendar
 - ruleSetName: Workday
   targetName: MR Overview
+- ruleSetName: Workday
+  targetName: Zoom
 connectivityCheck:
   endpoint: https://connectivity-check.timo-reymann.de/
   timeout: 00:00:30
