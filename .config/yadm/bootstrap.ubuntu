@@ -16,11 +16,6 @@ then
     line_br
 fi
 
-output_step "Execute ansible automation for class ${class}"
-# execute ansible playbook for setup based on class
-ansible-playbook ${HOME}/.workspace-setup/class_${class}.yml
-line_br
-
 output_step "Restore dconf settings"
 base_dir=$PWD
 cd ${HOME}/.dconf

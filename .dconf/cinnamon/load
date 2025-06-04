@@ -1,4 +1,0 @@
-#!/bin/bash
-cat cinnamon.dconf | sed "s/{{HOME}}/$(echo $HOME | sed 's/\//\\\//g')/g" > /tmp/cinnamon.dconf
-dconf load /org/cinnamon/ < /tmp/cinnamon.dconf
-

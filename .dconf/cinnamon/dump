@@ -1,3 +1,0 @@
-#!/bin/bash
-dconf dump /org/cinnamon/ > cinnamon.dconf
-cat cinnamon.dconf | sed "s/$(echo $HOME | sed 's/\//\\\//g')/\{{HOME}}/g" > cinnamon.dconf
