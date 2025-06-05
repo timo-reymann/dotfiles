@@ -12,7 +12,7 @@ dotfiles
 - configurations for toolings
 - custom helper scripts
 - custom fonts
-- my cinnamon de configuration
+- my de configuration
 - bash stuff
 
 ## Requirements
