@@ -1,5 +1,5 @@
 # generated using yadm template
-{% if yadm.os == 'Linux' %}
+{% if yadm.os == "Linux" %}
 [credential]
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 {% endif %}
