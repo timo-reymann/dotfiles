@@ -135,6 +135,8 @@ ForegroundVisited=155,89,182
 [General]
 BrowserApplication=google-chrome.desktop
 ColorSchemeHash=da6bdc305509d0b43465e95d790af9a471e1b7d7
+TerminalApplication=ghostty
+TerminalService=com.mitchellh.ghostty.desktop
 
 [KDE]
 LookAndFeelPackage=org.kde.breezedark.desktop
@@ -142,12 +144,12 @@ LookAndFeelPackage=org.kde.breezedark.desktop
 [KFileDialog Settings]
 Allow Expansion=false
 Automatically select filename extension=true
-Breadcrumb Navigation=true
+Breadcrumb Navigation=false
 Decoration position=2
 LocationCombo Completionmode=5
 PathCombo Completionmode=5
 Show Bookmarks=false
-Show Full Path=false
+Show Full Path=true
 Show Inline Previews=true
 Show Preview=false
 Show Speedbar=true

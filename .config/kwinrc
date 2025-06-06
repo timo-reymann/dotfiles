@@ -1,7 +1,16 @@
+[Compositing]
+AllowTearing=false
+
 [Desktops]
 Id_1=8f9d0229-ad84-43d0-9050-e8e58ba58a07
 Number=1
 Rows=1
+
+[Plugins]
+fadeEnabled=true
+fullscreenEnabled=false
+maximizeEnabled=false
+scaleEnabled=false
 
 [Tiling]
 padding=4
@@ -22,4 +31,4 @@ Scale=1
 BorderSize=Tiny
 BorderSizeAuto=false
 library=org.kde.kwin.aurorae
-theme=kwin4_decoration_qml_plastik
+theme=__aurorae__svg__Utterly-Round-Dark-Solid

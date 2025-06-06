@@ -15,10 +15,17 @@ immutability=1
 lastScreen=0
 location=0
 plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
+wallpaperplugin=org.kde.color
+
+[Containments][28][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][28][General]
 positions={"1969x1108":[],"2560x1440":[]}
+
+[Containments][28][Wallpaper][org.kde.color][General]
+Color=73,86,95
 
 [Containments][29]
 ItemGeometries-2133x1200=
@@ -29,10 +36,17 @@ immutability=1
 lastScreen=1
 location=0
 plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
+wallpaperplugin=org.kde.color
+
+[Containments][29][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][29][General]
 positions={"2133x1200":[],"2560x1440":[]}
+
+[Containments][29][Wallpaper][org.kde.color][General]
+Color=76,89,98
 
 [Containments][30]
 ItemGeometries-2048x1152=
@@ -43,10 +57,17 @@ immutability=1
 lastScreen=2
 location=0
 plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
+wallpaperplugin=org.kde.color
+
+[Containments][30][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
 
 [Containments][30][General]
 positions={"2048x1152":[],"2560x1440":[]}
+
+[Containments][30][Wallpaper][org.kde.color][General]
+Color=36,43,48
 
 [Containments][57]
 activityId=
@@ -66,12 +87,11 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][57][Applets][110][Configuration]
-PreloadWeight=60
+PreloadWeight=70
 popupHeight=378
 popupWidth=432
 
 [Containments][57][Applets][110][Configuration][General]
-currentTab=streams
 migrated=true
 
 [Containments][57][Applets][111]
@@ -79,7 +99,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][57][Applets][111][Configuration]
-PreloadWeight=55
+PreloadWeight=75
 popupHeight=432
 popupWidth=432
 
@@ -97,7 +117,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][57][Applets][59][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 SystrayContainmentId=60
 
 [Containments][57][Applets][76]
@@ -109,7 +129,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][57][Applets][77][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 popupHeight=450
 popupWidth=560
 
@@ -149,7 +169,7 @@ AppletOrder=59;76;77;79;112;111;110;109;80
 activityId=
 formfactor=2
 immutability=1
-lastScreen=-1
+lastScreen=0
 location=3
 plugin=org.kde.plasma.private.systemtray
 popupHeight=432
@@ -177,7 +197,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][60][Applets][66][Configuration]
-PreloadWeight=55
+PreloadWeight=65
 
 [Containments][60][Applets][67][Configuration]
 PreloadWeight=42
@@ -214,7 +234,7 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][60][General]
-extraItems=org.kde.kupapplet,org.kde.plasma.clipboard,org.kde.plasma.notifications,kded6,spotify-client,toolbox,Albert,Xwayland Video Bridge_pipewireToXProxy
+extraItems=org.kde.kupapplet,org.kde.plasma.clipboard,org.kde.plasma.notifications
 hiddenItems=kded6,Xwayland Video Bridge_pipewireToXProxy
 iconSpacing=1
 knownItems=org.kde.plasma.brightness,org.kde.kupapplet,org.kde.plasma.clipboard,org.kde.plasma.manage-inputmethod,org.kde.plasma.printmanager,org.kde.plasma.mediacontroller,org.kde.plasma.cameraindicator,org.kde.plasma.vault,org.kde.plasma.notifications,org.kde.plasma.keyboardindicator,org.kde.plasma.bluetooth,org.kde.plasma.battery,org.kde.plasma.networkmanagement,org.kde.kscreen,org.kde.plasma.volume,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier
@@ -233,6 +253,13 @@ wallpaperplugin=org.kde.image
 [Containments][85][Applets][88]
 immutability=1
 plugin=org.kde.plasma.icontasks
+
+[Containments][85][Applets][88][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][85][Applets][88][Configuration][General]
+launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser,applications:spotify.desktop,applications:com.mitchellh.ghostty.desktop
 
 [Containments][85][General]
 AppletOrder=88

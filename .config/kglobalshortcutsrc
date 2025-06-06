@@ -246,8 +246,8 @@ cycle-panels=Meta+Alt+P,Meta+Alt+P,Move keyboard focus between panels
 cycleNextAction=none,,Next History Item
 cyclePrevAction=none,,Previous History Item
 manage activities=Meta+Q,Meta+Q,Show Activity Switcher
-next activity=Meta+A,none,Walk through activities
-previous activity=Meta+Shift+A,none,Walk through activities (Reverse)
+next activity=none,none,Walk through activities
+previous activity=none,none,Walk through activities (Reverse)
 repeat_action=none,,Manually Invoke Action on Current Clipboard
 show dashboard=Ctrl+F12,Ctrl+F12,Show Desktop
 show-barcode=none,,Show Barcode…
@@ -256,3 +256,6 @@ stop current activity=Meta+S,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
+
+[services][net.local.albert-toggle.desktop]
+_launch=Meta+Space
