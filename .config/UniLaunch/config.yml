@@ -21,14 +21,16 @@ ruleSets:
   rules:
   - ruleName: always
 targets:
-- executable: /snap/bin/discord
+- executable: /usr/bin/discord
   arguments: 
   targetType: executable
   name: Discord
-- executable: /snap/bin/spotify
+  waitForNetworkConnectivity: false
+- executable: /usr/bin/spotify
   arguments: 
   targetType: executable
   name: Spotify
+  waitForNetworkConnectivity: false
 entries:
 - ruleSetName: Workday evening
   targetName: Discord
@@ -36,3 +38,6 @@ entries:
   targetName: Discord
 - ruleSetName: Always
   targetName: Spotify
+connectivityCheck:
+  endpoint: https://connectivity-check.timo-reymann.de/
+  timeout: 00:00:03
