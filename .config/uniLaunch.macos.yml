@@ -48,11 +48,6 @@ targets:
   path: /Applications/zoom.us.app
   name: Zoom
   waitForNetworkConnectivity: true
-- executable: /Users/phpe/bin/open-mr-overview
-  arguments: 
-  targetType: executable
-  name: MR Overview
-  waitForNetworkConnectivity: true
 entries:
 - ruleSetName: Workday
   targetName: Slack
