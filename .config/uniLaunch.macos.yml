@@ -60,8 +60,6 @@ entries:
 - ruleSetName: Workday
   targetName: Calendar
 - ruleSetName: Workday
-  targetName: MR Overview
-- ruleSetName: Workday
   targetName: Zoom
 connectivityCheck:
   endpoint: https://connectivity-check.timo-reymann.de/
