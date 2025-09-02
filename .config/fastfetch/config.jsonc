@@ -19,18 +19,23 @@
       "type": "custom",
       "format": "{#yellow}System Info"
     },
+    "host",
     "kernel",
     "uptime",
     "memory",
     "disk",
     "gpu",
     "cpu",
+    "board",
     "break",
     {
       "type": "custom",
       "format": "{#yellow}Environment"
     },
+    "bios",
     "terminal",
+    "shell",
+    "packages",
     {
       "key": "Ansible",
       "type": "command",
@@ -41,32 +46,66 @@
       "type": "command",
       "text": "git --version | grep -o -P -e   \"version ([0-9]*\\\\.[0-9]*\\\\.[0-9]*)\" -o  | cut -d' ' -f2"
     },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#yellow}Programming Languages"
+    },
     {
       "key": "Go",
       "type": "command",
       "text": "go version | grep -o -P -e   \"go([0-9]*\\\\.[0-9]*\\\\.[0-9]*)\" -o | cut -c 3-",
       "keyIcon": ""
     },
-    "shell",
     {
       "key": "Pyton",
       "type": "command",
       "text": "python --version | cut -d' ' -f2"
     },
     {
-      "key": "Node",
+      "key": "Node.js",
       "type": "command",
       "text": "node --version"
     },
     {
-      "key": "Docker Client",
+      "key": "Java",
       "type": "command",
-      "text": "docker version --format '{{.Client.Version}}'"
+      "text": "java --version | head -n1 || echo \"none\""
     },
     {
-      "key": "Docker Server",
+      "key": "Go",
       "type": "command",
-      "text": "docker version --format '{{.Server.Version}}'"
+      "text": "echo $(go version 2> /dev/null || echo \" none\") | cut -d \" \" -f3"
+    },
+    {
+      "key": "Rust",
+      "type": "command",
+      "text": "rustc --version | cut -d' ' -f2"
+    },
+    {
+      "key": "PHP",
+      "type": "command",
+      "text": "php --version | head -n1 | cut -d' ' -f2"
+    },
+    {
+      "key": ".NET",
+      "type": "command",
+      "text": "dotnet --version"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "{#yellow}Tooling"
+    },
+    {
+      "key": "Docker",
+      "type": "command",
+      "text": "docker version --format 'Client {{.Client.Version}}; Server {{.Server.Version}}'"
+    },
+    {
+      "key": "OpenTofu",
+      "type": "command",
+      "text": "tofu --version | head -n1 | cut -d' ' -f2 || echo \"none\""
     },
     {
       "key": "Terraform",
