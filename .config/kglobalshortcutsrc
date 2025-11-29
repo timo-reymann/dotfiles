@@ -7,6 +7,18 @@ Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,
 _k_friendly_name=Keyboard Layout Switcher
 
+[com.google.Chrome]
+14D01F4D8DF98A446327AF48BE6A9167-fill_all_inputs=none,none,Fill all inputs
+14D01F4D8DF98A446327AF48BE6A9167-fill_this_form=none,none,Fill this form
+14D01F4D8DF98A446327AF48BE6A9167-fill_this_input=none,none,Fill this input
+97EC08BD179EB0798EB8AAED0BCF9CB4-addSite=none,none,Toggle current site
+97EC08BD179EB0798EB8AAED0BCF9CB4-switchEngine=none,none,Theme generation mode
+97EC08BD179EB0798EB8AAED0BCF9CB4-toggle=none,none,Toggle extension
+A7668420A3C95BD670B47D0A7787CC59-change-language=none,none,Change language
+A7668420A3C95BD670B47D0A7787CC59-screenshot-translation=none,none,Screenshot translation
+A7668420A3C95BD670B47D0A7787CC59-trigger-translation=none,none,Translate text
+_k_friendly_name=com.google.Chrome
+
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
 _k_friendly_name=Accessibility
@@ -209,6 +221,17 @@ playmedia=none,,Play media playback
 playpausemedia=Media Play,Media Play,Play/Pause media playback
 previousmedia=Media Previous,Media Previous,Media playback previous
 stopmedia=Media Stop,Media Stop,Stop media playback
+
+[org.chromium.Chromium]
+2D7E7A1EB52CF3DAAEC95E4CAC91CC02-addSite=none,none,Toggle current site
+2D7E7A1EB52CF3DAAEC95E4CAC91CC02-switchEngine=none,none,Theme generation mode
+2D7E7A1EB52CF3DAAEC95E4CAC91CC02-toggle=none,none,Toggle extension
+9626985660DE3452006CFDF22B79BEA8-fill_all_inputs=none,none,Fill all inputs
+9626985660DE3452006CFDF22B79BEA8-fill_this_form=none,none,Fill this form
+9626985660DE3452006CFDF22B79BEA8-fill_this_input=none,none,Fill this input
+A6FBAAD43AB90BAC402FFE58FF10E002-change-language=none,none,Change language
+A6FBAAD43AB90BAC402FFE58FF10E002-trigger-translation=none,none,Translate text
+_k_friendly_name=org.chromium.Chromium
 
 [org_kde_powerdevil]
 Decrease Keyboard Brightness=Keyboard Brightness Down,Keyboard Brightness Down,Decrease Keyboard Brightness

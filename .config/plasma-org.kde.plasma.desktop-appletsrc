@@ -87,7 +87,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][57][Applets][110][Configuration]
-PreloadWeight=70
+PreloadWeight=100
 popupHeight=378
 popupWidth=432
 
@@ -117,7 +117,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][57][Applets][59][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 SystrayContainmentId=60
 
 [Containments][57][Applets][76]
@@ -129,7 +129,7 @@ immutability=1
 plugin=org.kde.plasma.digitalclock
 
 [Containments][57][Applets][77][Configuration]
-PreloadWeight=60
+PreloadWeight=85
 popupHeight=450
 popupWidth=560
 
@@ -181,7 +181,7 @@ immutability=1
 plugin=org.kde.plasma.clipboard
 
 [Containments][60][Applets][61][Configuration]
-PreloadWeight=55
+PreloadWeight=60
 
 [Containments][60][Applets][62][Configuration]
 PreloadWeight=42
@@ -262,10 +262,11 @@ DialogHeight=540
 DialogWidth=720
 
 [Containments][85][Applets][88][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://filemanager,preferred://browser,applications:spotify.desktop,applications:com.mitchellh.ghostty.desktop
+launchers=applications:systemsettings.desktop,preferred://browser,applications:spotify.desktop,applications:com.mitchellh.ghostty.desktop,applications:org.kde.dolphin.desktop
 
 [Containments][85][General]
 AppletOrder=88
 
 [ScreenMapping]
 itemsOnDisabledScreens=
+screenMapping=
