@@ -1,9 +1,4 @@
 # generated using yadm template
-{% if yadm.os == "Linux" %}
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
-{% endif %}
-
 [user]
     name = Timo Reymann
 {% if yadm.class == "work" %}
