@@ -134,7 +134,7 @@ ForegroundVisited=155,89,182
 
 [General]
 BrowserApplication=google-chrome.desktop
-ColorSchemeHash=da6bdc305509d0b43465e95d790af9a471e1b7d7
+ColorSchemeHash=2c3f86428c11011a7c64ee1e7f47c274d498ff10
 TerminalApplication=ghostty
 TerminalService=com.mitchellh.ghostty.desktop
 
