@@ -129,15 +129,10 @@ shopt -s histappend
 
 source ~/.bash_completion
 
-if [[ "$OSTYPE" == "darwin"* ]]
-then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     source ~/.bashrc > /dev/null || true
 fi
 
-# Added by Toolbox App
-export PATH="$PATH:/home/timo/.local/share/JetBrains/Toolbox/scripts"
-
-# Added by Toolbox App
-export PATH="$PATH:/usr/local/bin"
-
-[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && tty -s && [[ $SHLVL -lt 2 ]] && fastfetch
+if [[ "$ASCIINEMA_RECORD" == "1" ]]; then
+    export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]Timo\[\033[36m\]\[\033[36m\] > \[\033[00m\]'
+fi

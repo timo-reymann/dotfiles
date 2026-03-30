@@ -1,6 +1,6 @@
 [session]
 add_marker_key = "^x"
-command = "bash --rcfile $HOME/.bash_profile"
+command = "ASCIINEMA_RECORD=1 bash --rcfile $HOME/.bash_profile"
 
 [playback]
 next_marker_key = "m"
