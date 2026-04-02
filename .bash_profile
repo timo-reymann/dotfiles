@@ -125,6 +125,7 @@ alias webp-convert="docker run -v \$PWD:/workspace --rm -it timoreymann/webp-uti
 alias awsume="__awsume_with_retry"
 alias load-env-file=". _load-env-file"
 alias load-secret="__load_secret"
+alias k="kubectl"
 
 # shell bookmarks
 if [ -f ~/.local/bin/bashmarks.sh ]
