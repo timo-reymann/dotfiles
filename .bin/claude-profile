@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+import tomllib
+from pathlib import Path
+
+CONFIG_PATH = Path.home() / ".claude-profiles.toml"
+STATE_PATH = Path.home() / ".claude-active-profile"
+STATUSLINE_CMD = "bash " + str(Path.home() / ".bin" / "claude-statusline")
+
+SEED_SETTINGS = {
+    "statusLine": {
+        "type": "command",
+        "command": STATUSLINE_CMD,
+    }
+}
+
+
+def load_config():
+    if not CONFIG_PATH.exists():
+        print(f"Config not found: {CONFIG_PATH}", file=sys.stderr)
+        sys.exit(2)
+    with open(CONFIG_PATH, "rb") as f:
+        return tomllib.load(f)
+
+
+def read_state():
+    if not STATE_PATH.exists():
+        return None
+    lines = STATE_PATH.read_text().strip().splitlines()
+    if len(lines) < 3:
+        return None
+    return {"name": lines[0], "color": lines[1], "config_dir": lines[2], "emoji": lines[3] if len(lines) > 3 else "👤"}
+
+
+def seed_profile(config_dir: Path):
+    config_dir.mkdir(parents=True, exist_ok=True)
+    settings_path = config_dir / "settings.json"
+    if settings_path.exists():
+        return
+    settings_path.write_text(json.dumps(SEED_SETTINGS, indent=2) + "\n")
+    print(f"Seeded {settings_path}")
+
+
+def cmd_set(name):
+    config = load_config()
+    profiles = config.get("profiles", {})
+    if name not in profiles:
+        print(f"Unknown profile: {name}", file=sys.stderr)
+        print(f"Available: {', '.join(profiles.keys())}", file=sys.stderr)
+        sys.exit(2)
+    profile = profiles[name]
+    config_dir_path = Path(profile["config_dir"]).expanduser().resolve()
+    config_dir = str(config_dir_path)
+    color = profile.get("color", "white")
+    emoji = profile.get("emoji", "👤")
+    seed_profile(config_dir_path)
+    STATE_PATH.write_text(f"{name}\n{color}\n{config_dir}\n{emoji}\n")
+    print(f"Switched to profile: {name}")
+
+
+def cmd_list():
+    config = load_config()
+    profiles = config.get("profiles", {})
+    state = read_state()
+    active = state["name"] if state else None
+    for name, profile in profiles.items():
+        marker = "* " if name == active else "  "
+        print(f"{marker}{name} ({profile.get('color', 'white')})")
+
+
+def cmd_current():
+    state = read_state()
+    if not state:
+        print("No active profile. Use: claude-profile set <name>", file=sys.stderr)
+        sys.exit(2)
+    print(state["name"])
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: claude-profile <set|list|current> [name]", file=sys.stderr)
+        sys.exit(2)
+
+    cmd = sys.argv[1]
+    if cmd == "set":
+        if len(sys.argv) < 3:
+            print("Usage: claude-profile set <name>", file=sys.stderr)
+            sys.exit(2)
+        cmd_set(sys.argv[2])
+    elif cmd == "list":
+        cmd_list()
+    elif cmd == "current":
+        cmd_current()
+    else:
+        print(f"Unknown command: {cmd}", file=sys.stderr)
+        print("Usage: claude-profile <set|list|current> [name]", file=sys.stderr)
+        sys.exit(2)
+
+
+if __name__ == "__main__":
+    main()

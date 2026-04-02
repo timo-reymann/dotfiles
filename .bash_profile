@@ -60,6 +60,26 @@ __awsume_with_retry() {
     fi
 }
 
+__claude_profile_prompt() {
+    local state_file="$HOME/.claude-active-profile"
+    if [[ -f "$state_file" ]]; then
+        local name color code
+        { read -r name; read -r color; } < "$state_file"
+        declare -A colors=([red]=31 [green]=32 [yellow]=33 [blue]=34 [magenta]=35 [cyan]=36 [white]=37)
+        code="${colors[$color]:-37}"
+        echo "  \[\033[${code}m\]●[${name^}]\[\033[0m\]"
+    fi
+}
+
+__claude_profile_env() {
+    local state_file="$HOME/.claude-active-profile"
+    if [[ -f "$state_file" ]]; then
+        local name color config_dir
+        { read -r name; read -r color; read -r config_dir; } < "$state_file"
+        export CLAUDE_CONFIG_DIR="$config_dir"
+    fi
+}
+
 __log_bash_persistent_history()
 {
   [[
@@ -78,6 +98,7 @@ __log_bash_persistent_history()
 run_on_prompt_command()
 {
     __log_bash_persistent_history
+    __claude_profile_env
     history -a
     history -c
     history -r
@@ -117,6 +138,8 @@ export GOPATH="$HOME/go"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Add bin
 export PATH="$PATH:$HOME/.bin:/usr/local/go/bin:$GOPATH/bin"
+# Load claude profile env
+__claude_profile_env
 # Customize bash colors
 export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]\u@\h\[\033[36m\]  📂 \w \[\033[00m\] ⏰ $(date "+%H:%M:%S")\[\033[00m\]\[\e[33m\]\[\033[00;92m\]\[\e[1m\]$(__git_branch)\[\033[96m\]$(__virtualenv_info)\[\033[93m\]$(__secrets_loaded)\[\033[00;34m\]\[\e[1m\]$(__awsume_active_profile)\[\033[00m\]\n$ '
 # Environment variables
@@ -136,3 +159,5 @@ fi
 if [[ "$ASCIINEMA_RECORD" == "1" ]]; then
     export PS1='\n🦄 \[\e[1m\]\[\e[38;5;202m\]Timo\[\033[36m\]\[\033[36m\] > \[\033[00m\]'
 fi
+
+[ "$TERMINAL_EMULATOR" != "JetBrains-JediTerm" ] && tty -s && [[ $SHLVL -lt 2 ]] && fastfetch

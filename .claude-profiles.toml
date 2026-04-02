@@ -1,0 +1,9 @@
+[profiles.work]
+config_dir = "~/.claude-profiles/work"
+color = "yellow"
+emoji = "💼"
+
+[profiles.private]
+config_dir = "~/.claude-profiles/private"
+color = "magenta"
+emoji = "🏠"
