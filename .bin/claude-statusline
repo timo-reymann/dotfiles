@@ -43,6 +43,11 @@ fi
 
 # Session data segments
 if command -v jq &>/dev/null && [[ -n "$input" ]]; then
+    model=$(printf '%s' "$input" | jq -r '.model.display_name // empty')
+    if [[ -n "$model" ]]; then
+        printf "  \033[95m🤖%s\033[0m" "$model"
+    fi
+
     cost=$(printf '%s' "$input" | jq -r '.cost.total_cost_usd // 0')
     if [[ "$cost" != "0" && "$cost" != "null" ]]; then
         printf "  \033[38;5;208m💰\$%.4f\033[0m" "$cost"
