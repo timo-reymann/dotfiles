@@ -6,3 +6,4 @@
 .ssh/id_ed25519_deepl*
 .secrets/*.env
 .netrc
+.claude-profiles/*/settings*
