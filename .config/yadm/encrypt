@@ -7,3 +7,4 @@
 .secrets/*.env
 .netrc
 .claude-profiles/*/settings*
+.claude-profiles/work/CLAUDE.md
