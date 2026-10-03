@@ -14,7 +14,7 @@
   },
   "agent": {
     "plan": {
-      "model": "opencode-go/glm-5.2",
+      "model": "opencode-go/minimax-m3",
       "permission": {
         "read": "allow",
         "glob": "allow",
@@ -23,7 +23,7 @@
       }
     },
     "build": {
-      "model": "opencode-go/mimo-v2.5"
+      "model": "opencode-go/mimo-v2.6-flash"
     }
   }
 }
