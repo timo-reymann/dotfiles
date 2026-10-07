@@ -3,6 +3,9 @@
 # Read session data from stdin (provided by Claude Code)
 input=$(cat)
 
+# Profiles (by name in the state file) that show the budget; empty = all profiles
+BUDGET_PROFILES=(work)
+
 state_file="$HOME/.claude-active-profile"
 
 if [[ ! -f "$state_file" ]]; then
@@ -14,6 +17,7 @@ color=""
 config_dir=""
 emoji=""
 { read -r name; read -r color; read -r config_dir; read -r emoji; } < "$state_file"
+config_dir="${config_dir/#\~/$HOME}"
 
 declare -A colors=([red]=31 [green]=32 [yellow]=33 [blue]=34 [magenta]=35 [cyan]=36 [white]=37)
 code="${colors[$color]:-37}"
@@ -53,6 +57,15 @@ if command -v jq &>/dev/null && [[ -n "$input" ]]; then
         printf "  \033[38;5;208m💰\$%.4f\033[0m" "$cost"
     fi
 
+    # Budget segment: month % · today % (spend read from Claude Code history via ccusage)
+    if [[ -n "$config_dir" ]] && { (( ${#BUDGET_PROFILES[@]} == 0 )) || [[ " ${BUDGET_PROFILES[*]} " == *" $name "* ]]; }; then
+        read -r m_pct d_pct _ _ _ < <("$HOME/.bin/claude-budget" "$config_dir" 2>/dev/null)
+        if [[ -n "$m_pct" ]]; then
+            printf "  $(pct_color "$m_pct")📅%.0f%%\033[0m" "$m_pct"
+            printf "\033[2m·\033[0m$(pct_color "$d_pct")☀️%.0f%%\033[0m" "$d_pct"
+        fi
+    fi
+
     ctx=$(printf '%s' "$input" | jq -r '.context_window.used_percentage // empty')
     if [[ -n "$ctx" ]]; then
         printf "  $(pct_color "$ctx")🪟%.0f%%\033[0m" "$ctx"
@@ -72,6 +85,7 @@ if command -v jq &>/dev/null && [[ -n "$input" ]]; then
 fi
 
 # MCP server count
+
 mcp_count=$(jq '.mcpServers | length' ~/.claude.json 2>/dev/null)
 if [[ -n "$mcp_count" && "$mcp_count" -gt 0 ]]; then
     printf "  \033[94m🔧%d\033[0m" "$mcp_count"
