@@ -1,0 +1,314 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["textual>=8,<9"]
+# ///
+"""Search Claude Code sessions from $CLAUDE_CONFIG_DIR/history.jsonl and resume one with Enter."""
+import json
+import os
+import shlex
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+
+from rich.cells import cell_len
+from rich.text import Text
+from textual.app import App, ComposeResult
+from textual.binding import Binding
+from textual.suggester import Suggester
+from textual.widgets import Footer, Input, OptionList
+from textual.widgets.option_list import Option
+
+
+MAX_AGE_DAYS = 180
+MAX_CARDS = 150
+
+
+def config_dirs():
+    cfg = Path(os.environ.get("CLAUDE_CONFIG_DIR") or Path.home() / ".claude")
+    return [cfg] if (cfg / "history.jsonl").is_file() else []
+
+
+def profile_name(cfg):
+    return cfg.name
+
+
+def load_costs(cfg):
+    """Map session id to the last total cost in its transcript. Old transcripts are deleted."""
+    costs = {}
+    for path in cfg.glob("projects/*/*.jsonl"):
+        last = None
+        try:
+            with open(path, encoding="utf-8", errors="ignore") as fh:
+                for line in fh:
+                    if '"cost-state"' in line:
+                        last = line
+            if last:
+                costs[path.stem] = json.loads(last).get("totalCostUSD")
+        except (OSError, ValueError):
+            continue
+    return costs
+
+
+def load_sessions(cfgs):
+    sessions = {}
+    for cfg in cfgs:
+        with open(cfg / "history.jsonl", encoding="utf-8") as fh:
+            for line in fh:
+                try:
+                    e = json.loads(line)
+                except ValueError:
+                    continue
+                sid = e.get("sessionId")
+                if not sid:
+                    continue
+                text = (e.get("display") or "").strip()
+                s = sessions.setdefault(
+                    (cfg, sid),
+                    {"id": sid, "cfg": cfg, "profile": profile_name(cfg), "project": "", "last": 0,
+                     "title": "", "texts": [], "count": 0},
+                )
+                s["project"] = e.get("project") or s["project"]
+                s["last"] = max(s["last"], e.get("timestamp") or 0)
+                s["count"] += 1
+                if text:
+                    s["texts"].append(text)
+                    if not s["title"] and not text.startswith("/"):
+                        s["title"] = text
+    cutoff = (time.time() - MAX_AGE_DAYS * 86400) * 1000
+    sessions = {k: s for k, s in sessions.items() if s["last"] >= cutoff}
+    costs = {cfg: load_costs(cfg) for cfg in cfgs}
+    for s in sessions.values():
+        s["cost"] = costs[s["cfg"]].get(s["id"])
+        s["title"] = " ".join((s["title"] or (s["texts"][0] if s["texts"] else "")).split())
+        s["haystack"] = " ".join([s["id"], s["profile"], s["project"], *s["texts"]]).lower()
+        s["fields"] = {k: f(s) for k, f in FIELDS.items()}
+    return sorted(sessions.values(), key=lambda s: (s["last"], s["id"]), reverse=True)
+
+
+FIELDS = {
+    "dir": lambda s: s["project"].lower(),
+    "title": lambda s: s["title"].lower(),
+    "id": lambda s: s["id"].lower(),
+    "text": lambda s: " ".join(s["texts"]).lower(),
+    "date": lambda s: datetime.fromtimestamp(s["last"] / 1000).strftime("%Y-%m-%d %H:%M"),
+}
+
+
+def parse_query(query):
+    """Split a query in (field, value) filters. A word without a known key is full text."""
+    try:
+        words = shlex.split(query.lower())
+    except ValueError:
+        words = query.lower().split()
+    filters = []
+    for word in words:
+        key, _, value = word.partition(":")
+        if value and key in FIELDS:
+            if key == "dir" and value.startswith("~"):
+                value = str(Path.home()).lower() + value[1:]
+            filters.append((key, value))
+        else:
+            filters.append((None, word))
+    return filters
+
+
+def filter_sessions(sessions, query):
+    filters = parse_query(query)
+
+    def match(s):
+        return all(v in (s["fields"][k] if k else s["haystack"]) for k, v in filters)
+
+    return [s for s in sessions if match(s)]
+
+
+def fmt_time(ms):
+    return datetime.fromtimestamp(ms / 1000).strftime("%Y-%m-%d %H:%M")
+
+
+def short_path(path):
+    home = str(Path.home())
+    return "~" + path[len(home):] if path.startswith(home) else path
+
+
+def highlight(text, style, terms):
+    out = Text(text, style=style, no_wrap=True, overflow="ellipsis")
+    low = text.lower()
+    for term in terms:
+        i = low.find(term)
+        while i != -1:
+            out.stylize("bold underline magenta", i, i + len(term))
+            i = low.find(term, i + 1)
+    return out
+
+
+def pad(text, width):
+    return text + " " * max(0, width - cell_len(text))
+
+
+def card(s, terms, width):
+    day, clock = fmt_time(s["last"]).split(" ")
+    card = highlight(s["title"] or "(no prompt)", "bold", terms)
+    card.truncate(width, overflow="ellipsis")
+    left = f"📆 {day}  🕐 {clock}  📁 "
+    cost = pad(f"  💲 {s['cost']:.2f}" if s["cost"] is not None else "", 11)
+    right = f"🔑 {s['id']}  💬 {s['count']}{cost}"
+    # The folder gets the space that is left. Its start is cut when it is too long.
+    room = max(8, width - cell_len(left) - cell_len(right) - 2)
+    folder = short_path(s["project"])
+    if cell_len(folder) > room:
+        folder = "…" + folder[-(room - 1):]
+    head, base = os.path.split(folder)
+    card.append("\n\n" + left, style="yellow")
+    card.append_text(highlight(head + "/" if head else "", "blue", terms))
+    card.append_text(highlight(base, "bold green", terms))
+    gap = max(2, width - cell_len(left) - cell_len(folder) - cell_len(right))
+    card.append(" " * gap)
+    card.append("🔑 ")
+    card.append_text(highlight(s["id"], "cyan", terms))
+    card.append(f"  💬 {s['count']}", style="dim")
+    card.append(cost, style="bold yellow")
+    return card
+
+
+class KeySuggester(Suggester):
+    """Suggest a key, or a known value of a key, for the last word of the query."""
+
+    def __init__(self, sessions):
+        super().__init__(use_cache=False, case_sensitive=True)
+        # The sessions are sorted with the newest first, so the best match comes first.
+        self.values = {
+            "dir": list(dict.fromkeys(short_path(s["project"]) for s in sessions if s["project"])),
+            "date": list(dict.fromkeys(fmt_time(s["last"])[:10] for s in sessions)),
+            "id": [s["id"] for s in sessions],
+        }
+
+    async def get_suggestion(self, value):
+        word = value.rsplit(" ", 1)[-1]
+        if not word or '"' in word:
+            return None
+        before = value[: len(value) - len(word)]
+        key, colon, typed = word.partition(":")
+        key, typed = key.lower(), typed.lower()
+        if not colon:
+            for name in FIELDS:
+                if name.startswith(key) and name != key:
+                    return before + name + ":"
+            return None
+        for candidate in self.values.get(key, ()):
+            if candidate.lower().startswith(typed) and candidate.lower() != typed:
+                return before + key + ":" + candidate
+        return None
+
+
+class Sessions(App):
+    CSS = """
+    Input { margin: 0 0 1 0; }
+    OptionList { height: 1fr; border: none; padding: 0 1; }
+    OptionList > .option-list--option { padding: 0 1; }
+    """
+    BINDINGS = [
+        ("escape", "quit", "Quit"),
+        Binding("ctrl+c", "quit", "Quit", show=False, priority=True),
+        Binding("tab", "complete", "Complete", priority=True),
+        ("down", "move(1)", "Down"),
+        ("up", "move(-1)", "Up"),
+        ("pagedown", "page(1)", "Page down"),
+        ("pageup", "page(-1)", "Page up"),
+        ("ctrl+u", "clear", "Clear search"),
+    ]
+
+    def __init__(self, sessions):
+        super().__init__()
+        self.sessions = sessions
+        self.by_id = {}
+        self.drawn_width = 0
+        self.pending = None
+
+    def compose(self) -> ComposeResult:
+        yield Input(suggester=KeySuggester(self.sessions), placeholder="Search text or key:value (dir: title: id: text: date:), Enter to resume")
+        yield OptionList()
+        yield Footer()
+
+    def on_mount(self):
+        self.query_one(OptionList).can_focus = False
+        self.refill("")
+
+    def on_resize(self):
+        if self.size.width != self.drawn_width:
+            self.refill(self.query_one(Input).value)
+
+    def refill(self, query):
+        terms = [v for _, v in parse_query(query)]
+        found = filter_sessions(self.sessions, query)
+        rows = found[:MAX_CARDS]
+        self.drawn_width = self.size.width
+        options = []
+        self.by_id = {}
+        for s in rows:
+            self.by_id[s["id"]] = s
+            options += [Option(card(s, terms, max(20, self.size.width - 8)), id=s["id"]), None]
+        listing = self.query_one(OptionList)
+        listing.clear_options()
+        listing.add_options(options)
+        if rows:
+            listing.highlighted = 0
+        more = f", first {MAX_CARDS} shown" if len(found) > MAX_CARDS else ""
+        self.sub_title = f"{len(found)}/{len(self.sessions)} sessions{more}"
+
+    def current(self):
+        listing = self.query_one(OptionList)
+        if listing.highlighted is None:
+            return None
+        return self.by_id.get(listing.get_option_at_index(listing.highlighted).id)
+
+    def on_input_changed(self, event):
+        if self.pending:
+            self.pending.stop()
+        self.pending = self.set_timer(0.08, lambda: self.refill(event.value))
+
+    def on_input_submitted(self, event):
+        if self.pending:
+            self.pending.stop()
+            self.pending = None
+            self.refill(event.value)
+        s = self.current()
+        if s:
+            self.exit(s)
+
+    def action_move(self, step):
+        listing = self.query_one(OptionList)
+        listing.action_cursor_down() if step > 0 else listing.action_cursor_up()
+
+    def action_page(self, step):
+        listing = self.query_one(OptionList)
+        listing.action_page_down() if step > 0 else listing.action_page_up()
+
+    def action_complete(self):
+        self.query_one(Input).action_cursor_right()
+
+    def action_clear(self):
+        self.query_one(Input).value = ""
+
+
+def main():
+    cfgs = config_dirs()
+    if not cfgs:
+        sys.exit("no history.jsonl found")
+    sessions = load_sessions(cfgs)
+    if not sessions:
+        sys.exit("no sessions found")
+    app = Sessions(sessions)
+    app.title = "Claude sessions"
+    choice = app.run()
+    if not choice:
+        return
+    if os.path.isdir(choice["project"]):
+        os.chdir(choice["project"])
+    print(f"cd {choice['project']} && claude --resume {choice['id']}")
+    os.execvp("claude", ["claude", "--resume", choice["id"]])
+
+
+if __name__ == "__main__":
+    main()
