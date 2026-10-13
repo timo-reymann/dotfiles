@@ -34,21 +34,26 @@ def profile_name(cfg):
     return cfg.name
 
 
-def load_costs(cfg):
-    """Map session id to the last total cost in its transcript. Old transcripts are deleted."""
-    costs = {}
+def load_meta(cfg):
+    """Map session id to the last cost and the last name (from /rename) in its transcript."""
+    meta = {}
     for path in cfg.glob("projects/*/*.jsonl"):
-        last = None
+        last = {}
         try:
             with open(path, encoding="utf-8", errors="ignore") as fh:
                 for line in fh:
-                    if '"cost-state"' in line:
-                        last = line
-            if last:
-                costs[path.stem] = json.loads(last).get("totalCostUSD")
+                    for kind in ("cost-state", "custom-title"):
+                        if f'"{kind}"' in line:
+                            last[kind] = line
+            entry = {}
+            if "cost-state" in last:
+                entry["cost"] = json.loads(last["cost-state"]).get("totalCostUSD")
+            if "custom-title" in last:
+                entry["name"] = json.loads(last["custom-title"]).get("customTitle")
+            meta[path.stem] = entry
         except (OSError, ValueError):
             continue
-    return costs
+    return meta
 
 
 def load_sessions(cfgs):
@@ -78,11 +83,13 @@ def load_sessions(cfgs):
                         s["title"] = text
     cutoff = (time.time() - MAX_AGE_DAYS * 86400) * 1000
     sessions = {k: s for k, s in sessions.items() if s["last"] >= cutoff}
-    costs = {cfg: load_costs(cfg) for cfg in cfgs}
+    metas = {cfg: load_meta(cfg) for cfg in cfgs}
     for s in sessions.values():
-        s["cost"] = costs[s["cfg"]].get(s["id"])
-        s["title"] = " ".join((s["title"] or (s["texts"][0] if s["texts"] else "")).split())
-        s["haystack"] = " ".join([s["id"], s["profile"], s["project"], *s["texts"]]).lower()
+        meta = metas[s["cfg"]].get(s["id"], {})
+        s["cost"] = meta.get("cost")
+        s["name"] = meta.get("name") or ""
+        s["title"] = " ".join((s["name"] or s["title"] or (s["texts"][0] if s["texts"] else "")).split())
+        s["haystack"] = " ".join([s["id"], s["profile"], s["project"], s["name"], *s["texts"]]).lower()
         s["fields"] = {k: f(s) for k, f in FIELDS.items()}
     return sorted(sessions.values(), key=lambda s: (s["last"], s["id"]), reverse=True)
 
