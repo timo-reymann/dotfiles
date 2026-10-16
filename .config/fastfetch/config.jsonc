@@ -19,6 +19,7 @@
       "type": "custom",
       "format": "{#yellow}System Info"
     },
+    "os",
     "host",
     "kernel",
     "uptime",
