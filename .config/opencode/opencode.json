@@ -4,7 +4,8 @@
   "plugin": [
     "opencode-agent-skills@0.6.5",
     "cc-safety-net@0.8.2",
-    "@mohak34/opencode-notifier@0.2.1"
+    "@mohak34/opencode-notifier@0.2.1",
+    "opencode-add-dir@1.8.0"
   ],
   "mcp": {
     "chrome-devtools": {
