@@ -33,14 +33,6 @@ targets:
   name: Viscosity VPN
   waitForNetworkConnectivity: false
 - targetType: appFile
-  path: /Applications/Mail.app
-  name: Mail
-  waitForNetworkConnectivity: false
-- targetType: appFile
-  path: /Applications/Calendar.app
-  name: Calendar
-  waitForNetworkConnectivity: false
-- targetType: appFile
   path: /Applications/Vorta.app
   name: Vorta Backup
   waitForNetworkConnectivity: false
@@ -55,10 +47,6 @@ entries:
   targetName: Viscosity VPN
 - ruleSetName: Workday
   targetName: Vorta Backup
-- ruleSetName: Always
-  targetName: Mail
-- ruleSetName: Workday
-  targetName: Calendar
 - ruleSetName: Workday
   targetName: Zoom
 connectivityCheck:
