@@ -49,12 +49,20 @@ def message_data(root, session_id):
     return sorted(messages, key=lambda m: m.get("time", {}).get("created", 0))
 
 
+def summary_title(value):
+    """Return the title text of a summary value, which is a dict or a string."""
+    if isinstance(value, dict):
+        return value.get("title")
+    if isinstance(value, str):
+        return value
+    return None
+
+
 def message_meta(messages):
     texts = []
     cost = 0.0
     for message in messages:
-        summary = message.get("summary") or {}
-        title = summary.get("title")
+        title = summary_title(message.get("summary"))
         if title:
             texts.append(str(title).strip())
         cost += message.get("cost") or 0
@@ -95,7 +103,7 @@ def database_sessions(root):
     for sid, project_id, directory, title, updated, cost in rows:
         texts = []
         for message in messages.get(sid, ()):
-            text = message.get("text") or (message.get("summary") or {}).get("title")
+            text = message.get("text") or summary_title(message.get("summary"))
             if text:
                 texts.append(str(text).strip())
         result[sid] = {
