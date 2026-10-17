@@ -1,0 +1,26 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "darcula",
+    "mode": "dark"
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "hide",
+    "scrollbar": false,
+    "thinking": "hide"
+  },
+  "tabs": {
+    "scope": "cwd"
+  },
+  "animations": true,
+  "attention": {
+    "notifications": true,
+    "sound": false
+  },
+  "plugins": [
+    "opencode-add-dir"
+  ]
+}
