@@ -19,7 +19,14 @@
     { "action": "read", "resource": "**/id_ed25519*", "effect": "deny" }
   ],
   "plugins": [
-    "opencode-add-dir@1.8.0"
+    {
+      "package": "@prevalentware/opencode-goal-plugin@0.1.64",
+      "options": {
+        "auto_continue": true,
+        "default_token_budget": 199999,
+        "max_goal_duration_seconds": 1800
+      }
+    }
   ],
   "mcp": {
     "servers": {
