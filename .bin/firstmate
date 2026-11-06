@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Opens the firstmate session: resumes the latest one, or starts a new one. FIRSTMATE_DRY_RUN=1 prints only.
+set -euo pipefail
+
+dir="${FIRSTMATE_DIR:-$HOME/workspace/firstmate}"
+claude_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+
+[ -d "$dir" ] || { echo "firstmate: folder not found: $dir" >&2; exit 1; }
+cd "$dir"
+
+# One live session per home. Line 1 of state/.lock is the pid of the session that owns it.
+if [ -z "${FIRSTMATE_FORCE:-}" ] && [ -r state/.lock ]; then
+  pid="$(head -n 1 state/.lock)"
+  if [[ "$pid" =~ ^[0-9]+$ ]] && kill -0 "$pid" 2>/dev/null; then
+    echo "firstmate: a session already runs in $dir (pid $pid)." >&2
+    echo "Go to its terminal, or set FIRSTMATE_FORCE=1 to start another one." >&2
+    exit 1
+  fi
+fi
+
+prompt="${FIRSTMATE_PROMPT:-Lets start where we left off}"
+
+# Claude keeps the sessions of a folder as .jsonl files. The folder name is the path with / and . as -.
+sessions="$claude_dir/projects/$(pwd -P | sed 's#[/.]#-#g')"
+if compgen -G "$sessions/*.jsonl" >/dev/null; then
+  cmd=(claude --permission-mode auto --model sonnet --continue "$@" "$prompt")
+else
+  cmd=(claude --permission-mode auto --model sonnet "$@" "$prompt")
+fi
+
+if [ -n "${FIRSTMATE_DRY_RUN:-}" ]; then
+  printf 'cd %s\nCLAUDE_CONFIG_DIR=%s' "$dir" "$claude_dir"
+  printf ' %q' "${cmd[@]}"
+  printf '\n'
+  exit 0
+fi
+exec "${cmd[@]}"
