@@ -69,3 +69,23 @@ output_step "Decrypt secrets"
 yadm decrypt
 line_br
 
+output_step "Install agent CLI tools"
+if check_cmd_present npm
+then
+    npm install -g lavish-axi tasks-axi gh-axi chrome-devtools-axi quota-axi
+else
+    echo "npm not found, skipping agent CLI tools"
+fi
+line_br
+
+output_step "Setup agent skills"
+if [ ! -d "$HOME/workspace/agent-skills" ]
+then
+    mkdir -p "$HOME/workspace"
+    git clone git@github.com:timo-reymann/agent-skills.git "$HOME/workspace/agent-skills"
+fi
+for profile in "$HOME/.claude-profiles"/*/
+do
+    [ -d "$profile" ] && CLAUDE_CONFIG_DIR="${profile%/}" "$HOME/workspace/agent-skills/install.sh"
+done
+line_br
