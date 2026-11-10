@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Opens the firstmate session: resumes the latest one, or starts a new one. FIRSTMATE_DRY_RUN=1 prints only.
+# Opens the firstmate session: resumes the latest one if it is fresh, or starts a new one. FIRSTMATE_DRY_RUN=1 prints only.
+# A session counts as fresh when it changed in the last FIRSTMATE_MAX_AGE_MIN minutes (default 120).
 set -euo pipefail
 
 dir="${FIRSTMATE_DIR:-$HOME/workspace/firstmate}"
@@ -22,7 +23,8 @@ prompt="${FIRSTMATE_PROMPT:-Lets start where we left off}"
 
 # Claude keeps the sessions of a folder as .jsonl files. The folder name is the path with / and . as -.
 sessions="$claude_dir/projects/$(pwd -P | sed 's#[/.]#-#g')"
-if compgen -G "$sessions/*.jsonl" >/dev/null; then
+max_age="${FIRSTMATE_MAX_AGE_MIN:-120}"
+if [ -n "$(find "$sessions" -maxdepth 1 -name '*.jsonl' -mmin "-$max_age" 2>/dev/null | head -n 1)" ]; then
   cmd=(claude --permission-mode auto --model sonnet --continue "$@" "$prompt")
 else
   cmd=(claude --permission-mode auto --model sonnet "$@" "$prompt")
