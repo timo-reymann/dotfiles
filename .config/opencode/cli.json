@@ -21,6 +21,7 @@
     "sound": false
   },
   "plugins": [
-    "opencode-add-dir"
+    "opencode-add-dir",
+    "@prevalentware/opencode-goal-plugin@0.1.64"
   ]
 }
